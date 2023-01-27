@@ -1,12 +1,7 @@
 //kai
-// const router = require('express').Router();
-// //const userRoutes = require('./userRoutes');
-// //const reviewsRoutes = require('./reviewsRoutes');
-// //const restaurantsRoutes = require('./restaurantsRoutes');
+const router = require('express').Router();
+const userRoutes = require('./userRoutes');
 
-// router.use('/reviews', reviewsRoutes);
-// router.use('/users', userRoutes);
-// router.use('/restaurants', restaurantsRoutes);
+router.use('/users', userRoutes);
 
-
-// module.exports = router;
+module.exports = router;
