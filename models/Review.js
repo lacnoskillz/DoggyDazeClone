@@ -18,7 +18,7 @@ Review.init(
       autoIncrement: true,
       allowNull: false
     },
-    review_id: {
+    restaurant_id: {
       type: DataTypes.INTEGER,
       //References the Restaurant model's id.
       references: {
@@ -26,7 +26,7 @@ Review.init(
         key: 'id'
       }
     },
-    review_id: {
+    user_id: {
         type: DataTypes.INTEGER,
         //References the User model's id.
         references: {

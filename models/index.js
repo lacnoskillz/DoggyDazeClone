@@ -10,10 +10,10 @@ Review.belongsTo(Restaurant, {foreignKey: 'restaurant_id'});
 Review.belongsTo(User, {foreignKey: 'user_id'});
 
 // Restaurant has many Review
-Restaurant.hasMany(Review, {foreignKey: 'review_id'});
+Restaurant.hasMany(Review);
 
 // User has many Review
-User.hasMany(Review, {foreignKey: 'review_id'});
+User.hasMany(Review);
 
 module.exports = {
   Restaurant,
