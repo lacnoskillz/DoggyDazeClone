@@ -1,1 +1,5 @@
--- hazel --
+-- DROP DATABASE
+DROP DATABASE IF EXISTS doggydaze_db;
+
+-- CREATE DATABASE
+CREATE DATABASE doggydaze_db;

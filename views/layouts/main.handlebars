@@ -10,17 +10,16 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+  <div>
+    <header>
       <h1>
         <a href="/">Website Name</a>
       </h1>
       <nav>
-        <!-- Conditionally render login or logout links -->
         <div>
         {{#if logged_in}}
         <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/" id="logout">Logout</a>
         </div>
         <div>
         {{else}}
@@ -30,8 +29,7 @@
         {{/if}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+    <main>
       {{{ body }}}
     </main>
     <footer>
@@ -39,7 +37,6 @@
     </footer>
   </div>
 
-  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
