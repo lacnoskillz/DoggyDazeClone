@@ -6,6 +6,8 @@ const newReviewHandler = async (event) => {
 
     if (description) {
         const restaurant_id = document.URL.split('/').at(-1);
+        console.log(description)
+        console.log(restaurant_id)
         //send a POST request to the API endpoint
         const response = await fetch('/api/reviews', {
             method: 'POST',

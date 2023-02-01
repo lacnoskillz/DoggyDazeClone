@@ -18,6 +18,10 @@ Review.init(
       autoIncrement: true,
       allowNull: false
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING,
     },
