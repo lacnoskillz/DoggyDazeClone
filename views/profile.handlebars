@@ -1,11 +1,44 @@
-<div>
-    <div>
-        <h2>My Reviews</h2>
-    </div>
-    <div>
-        <!-- Each loop for previous 3 or so reviews posted by account owner -->
-    </div>
-    <div>
-        <p>Post New Review</p>
-    </div>
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}} to your profile!</h2>
+  </div>
 </div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Review:</h3>
+
+    <form class="form new-review-form">
+      <div class="form-group">
+        <label for="review-name">Restaurant Name:</label>
+        <input class="form-input" type="text" id="review-name" name="review-name" />
+      </div>
+      <div class="form-group">
+        <label for="review-desc">Review:</label>
+        <textarea class="form-input" id="review-desc" name="review-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post Review!</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if Reviews.length}}
+  <div class="col-md-6 review-list">
+    <h3>Your Reviews:</h3>
+
+    {{#each Reviews as |review|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{review.id}}">{{review.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{review.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>
