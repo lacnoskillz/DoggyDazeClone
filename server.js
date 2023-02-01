@@ -15,9 +15,9 @@ app.use(require('./controllers/homeRoutes'));
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, () => {
-    console.log(`server is listening on PORT ${PORT}. Hi Micahel & Kai`)
-});
+// app.listen(PORT, () => {
+//     console.log(`server is listening on PORT ${PORT}. Hi Micahel & Kai`)
+// });
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
