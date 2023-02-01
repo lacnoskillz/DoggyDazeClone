@@ -18,6 +18,18 @@ Review.init(
       autoIncrement: true,
       allowNull: false
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
     restaurant_id: {
       type: DataTypes.INTEGER,
       //References the Restaurant model's id.
@@ -27,13 +39,14 @@ Review.init(
       }
     },
     user_id: {
-        type: DataTypes.INTEGER,
-        //References the User model's id.
-        references: {
-          model: User,
-          key: 'id'
-        }
-      },
+      type: DataTypes.INTEGER,
+      //References the User model's id.
+      references: {
+        model: User,
+        key: 'id',
+
+      }
+    },
   },
   {
     sequelize,

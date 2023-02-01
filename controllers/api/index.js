@@ -1,12 +1,9 @@
 //kai
-// const router = require('express').Router();
-// //const userRoutes = require('./userRoutes');
-// //const reviewsRoutes = require('./reviewsRoutes');
-// //const restaurantsRoutes = require('./restaurantsRoutes');
+const router = require('express').Router();
+const userRoutes = require('./userRoutes');
+//Hazel
+const reviewRoutes = require('./reviewRoutes');
+router.use('/reviews', reviewRoutes);
+router.use('/users', userRoutes);
 
-// router.use('/reviews', reviewsRoutes);
-// router.use('/users', userRoutes);
-// router.use('/restaurants', restaurantsRoutes);
-
-
-// module.exports = router;
+module.exports = router;
