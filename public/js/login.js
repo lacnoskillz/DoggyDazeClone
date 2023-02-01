@@ -4,7 +4,7 @@ const loginFormHandler = async (event) => {
     
     const user_name = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-  
+  console.log(user_name,password,"user and pass");
     if (user_name && password) {
       
       const response = await fetch('/api/users/login', {
@@ -14,11 +14,11 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/profile');
       } else {
         alert('Failed to log in');
       }
     }
   };
   
-  document.getElementById('loginbtn').addEventListener('submit', loginFormHandler);
+  document.getElementById('loginbtn').addEventListener('click', loginFormHandler);
