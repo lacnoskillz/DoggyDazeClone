@@ -14,7 +14,10 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
+        
         document.location.replace('/profile');
+        logged_in = true;
+
       } else {
         alert('Failed to log in');
       }
