@@ -1,36 +1,41 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { user_name: req.body.user_name } });
+    console.log('user data:');
+    console.log(userData);
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
-
+    const validPassword =  userData.checkPassword(req.body.password);
+    console.log('password works');
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
 
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_name = userData.user_name;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({  userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({message:"no user account found"});
   }
 });
 
@@ -43,55 +48,6 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
-//create a new user/email/password
-
-router.post('/signup', async (req, res) => {
-    try {
-      const usernametaken = await User.findOne({ where: { user_name: req.body.user_name } });
-  
-      if (usernametaken) {
-        res
-          .status(400)
-          .json({ message: 'username already in use.' });
-        return;
-      }
-  
-      const Emailtaken = await User.findOne({ where: { email: req.body.email } });
-  
-      if (Emailtaken) {
-        res
-          .status(400)
-          .json({ message: 'email already in use' });
-        return;
-      } else {
-        //left off here
-        User.create(req.body)
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            
-            res.json({ user: userData, message: 'You are now logged in!' });
-          });
-
-      }
-  
-  
-     
-  
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
-  
-  router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
 
 
 
