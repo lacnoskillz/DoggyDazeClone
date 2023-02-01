@@ -18,11 +18,6 @@ Review.init(
       autoIncrement: true,
       allowNull: false
     },
-    //these will be changed
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     description: {
       type: DataTypes.STRING,
     },
@@ -44,7 +39,8 @@ Review.init(
       //References the User model's id.
       references: {
         model: User,
-        key: 'id'
+        key: 'id',
+
       }
     },
   },
