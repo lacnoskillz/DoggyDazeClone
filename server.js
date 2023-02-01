@@ -4,6 +4,7 @@ const app = express();
 // import sequelize connection
 const sequelize = require('./config/connection')
 
+
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
