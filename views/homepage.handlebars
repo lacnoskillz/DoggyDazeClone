@@ -3,9 +3,17 @@
    <input type="text" id="search" name="search"><br><br>
     <button>Search</button>
   </div>
+  {{#each restaurants as |restaurant|}}
   <div>
-    <button>View all restaurants</button>
+    <h2>
+      <a href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
+    </h2>
+    <p>
+      {{restaurant.rating}}
+    </p>
+    {{!-- <button>View all restaurants</button> --}}
   </div>
+  {{/each}}
   <div>
     <button>Post a review</button>
   </div>
