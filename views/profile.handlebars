@@ -5,7 +5,6 @@
 </div>
 
 <div class="row mt-4">
-  <h3>Your Reviews:</h3>
   {{#if Reviews.length}}
   <div class="col-md-6 review-list">
     <h3>Your Reviews:</h3>
@@ -16,7 +15,8 @@
         <h4><a href="get/reviews/{{id}}">{{description}} {{id}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{review.id}}">DELETE</button>
+        {{!-- Will have an error if there arent any reviews to delete. Since it cant find any delete buttons to use.  --}}
+        <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
