@@ -21,9 +21,8 @@ Restaurant.init(
   {
     sequelize,
     timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'restaurant'
+    freezeTableName: false,
+    underscored: true
   }
 );
 
