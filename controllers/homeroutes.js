@@ -56,13 +56,8 @@ router.get('/results', async (req, res) => {
 router.get('/restaurant/:id', async (req, res) => {
   try {
     const restaurantData = await Restaurant.findByPk(req.params.id, {
-      include: [{ model: Review }]
-      // include: [
-      //   {
-      //     model: Review,
-      //     attributes: ['description','date_created' ]
-      //   }
-      // ]
+      include: [{ model: Review, include: [{model: User}] }],
+    
     });
     const restaurant = restaurantData.get({ plain: true });
     //console.log(restaurant)

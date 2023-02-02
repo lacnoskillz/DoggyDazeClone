@@ -8,8 +8,8 @@ const newReviewHandler = async (event) => {
     if (description && rating) {
         const restaurant_id = document.URL.split('/').at(-1);
         console.log(description)
-        let rating = 19;
-        console.log(restaurant_id)
+        const rating = document.getElementById('myRange').value.trim();
+        console.log(rating,"here");
         //send a POST request to the API endpoint
         const response = await fetch('/api/reviews', {
             method: 'POST',
