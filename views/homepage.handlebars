@@ -1,16 +1,14 @@
 <div>
   <div>
-   <input type="text" id="search" name="search"><br><br>
-    <button>Search</button>
+    <input type="text" id="search" name="search"><br><br>
+    <button>search</button>
   </div>
+  <h2>Click on a restaurant to see how dogfriendly they are!</h2>
   {{#each restaurants as |restaurant|}}
   <div>
     <h2>
       <a href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
     </h2>
-    <p>
-      {{restaurant.rating}}
-    </p>
     {{!-- <button>View all restaurants</button> --}}
   </div>
   {{/each}}
