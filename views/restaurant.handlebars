@@ -1,6 +1,6 @@
 <div class="text-center">
     <h2>{{restaurant_name}}</h2>
-    <p>RATING:{{rating}}</p>
+    <p>RATING:{{Reviews.[0].rating}}</p>
     {{!-- Render reviews --}}
     {{#if Reviews.length}}
     <div class="col-md-6 restaurant-list">
@@ -9,8 +9,9 @@
          <div class="card">
             <p>
                 {{review.description}}
+                {{rating}}
             </p>
-            <p>Created by {{user_id}} on {{format_date date_created}}</p>
+            <p>Created by {{Reviews.[0].user.name}} on {{format_date date_created}}</p>
          </div>
          {{/each}}
     </div>
