@@ -3,12 +3,12 @@
     <p>Results</p>
     {{#each restaurants as |restaurant|}}
   <div>
-    <h2>
+    <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
-    </h2>
+    </h4>
   </div>
         <div class="card-body">
-            <p>Average rating: {{review.averageRating}}</p>
+            <p>Average rating: {{averageRating}}</p>
         </div>
     </div>
         {{/each}}

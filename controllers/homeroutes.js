@@ -48,55 +48,31 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-
-
 router.get('/results', async (req, res) => {
   try {
-    const resultData = await Restaurant.findAll({
+    const restaurantData = await Restaurant.findAll({
       include: [{ model: Review }],
       attributes: {
         include: [
           [
             sequelize.literal(
-              '(SELECT AVG(rating) FROM review WHERE review.restaurant_id = restaurant.id)'
+              '(SELECT ROUND(AVG(rating),1) AS averageRating FROM reviews WHERE reviews.restaurant_id = restaurant.id)'
             ),
             'averageRating',
           ],
         ],
       },
     });
-    res.status(200).json(resultData);
+
+    const restaurants = restaurantData.map((restaurant) => restaurant.get({ plain: true }));
+    res.render('results', {
+      restaurants
+    });
+    //res.status(200).json(restaurantData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-/*router.get('/results', async (req, res) => {
-  try {
-    const resultData = await Restaurant.findAll({
-      include: [{ model: Review }],
-      attributes: {
-        include: [
-          [
-            sequelize.literal(
-              '(SELECT AVG(rating) FROM review AND review.restaurant_id = restaurant.id)'
-            ),
-            'averageRating',
-          ],
-        ],
-      },
-    });
-
-    const results = resultData.map((result) => result.get({ plain: true }));
-
-    res.render('results', { 
-      ... results,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});*/
 
 /*router.get('/results/:restaurant_name', async (req, res) => {
   try {
