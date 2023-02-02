@@ -1,6 +1,29 @@
 header {
-    background-color: cadetblue;
-    padding: 15px;
+    background-color: darkcyan;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#navlinks {
+    padding: 8px;
+    
+}
+
+.links {
+    color:azure;
 }
 
 html {
@@ -32,17 +55,17 @@ footer {
 
 a:link {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 a:visited {
     text-decoration: none;
-    color:black;
+    color: black;
 }
 
 a:hover {
-    text-decoration:none;
-    color:crimson;
+    text-decoration: none;
+    color: crimson;
 }
 
 a:active {
@@ -96,4 +119,3 @@ h5 {
 h6 {
     font-size: 1rem;
 }
-

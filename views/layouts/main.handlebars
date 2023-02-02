@@ -15,10 +15,11 @@
         <a href="/">Doggy🐾Daze</a>
       </h1>
       <nav>
-        <div>
+        <div id="navlinks">
         {{#if logged_in}}
-        <a href="/profile">Profile</a> |
-        <a href="/" id="logout">Logout</a>
+        <a class="links" href="/profile">Profile</a> |
+        <a class="links" href="/" id="logout">Logout</a>
+        <a class="links" href="/" id="home">Home</a>
         </div>
         <div>
         {{else}}
