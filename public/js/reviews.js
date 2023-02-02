@@ -1,5 +1,6 @@
 const newReviewHandler = async (event) => {
     event.preventDefault();
+    console.log("hello?");
 
     const description = document.querySelector('#review').value.trim();
     const rating = document.querySelector('#myRange').value
@@ -7,7 +8,8 @@ const newReviewHandler = async (event) => {
     if (description && rating) {
         const restaurant_id = document.URL.split('/').at(-1);
         console.log(description)
-        console.log(restaurant_id)
+        const rating = document.getElementById('myRange').value.trim();
+        console.log(rating,"here");
         //send a POST request to the API endpoint
         const response = await fetch('/api/reviews', {
             method: 'POST',
@@ -17,7 +19,8 @@ const newReviewHandler = async (event) => {
             },
         });
         if (response.ok) {
-            document.location.replace(document.URL);
+           // console.log(description)
+            window.location.reload();
         } else {
             alert('Failed to create review');
         }
