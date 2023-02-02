@@ -48,8 +48,56 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 
-router.get('/results', async (req, res) => {
-  res.render('results');
+router.get('/results/', async (req, res) => {
+  try {
+    const resultData = await Restaurant.findAll({
+      include: [{ model: Review }],
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              '(SELECT AVG(rating) FROM review AND review.restaurant_id = restaurant.id)'
+            ),
+            'averageRating',
+          ],
+        ],
+      },
+    });
+
+    const posts = resultData.map((result) => result.get({ plain: true }));
+
+    res.render('results', { 
+      results, 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/results/:restaurant_name', async (req, res) => {
+  try {
+    const resultData = await Restaurant.findByPk(req.params.restaurant_name, {
+      include: [{ model: Review }],
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              '(SELECT AVG(rating) FROM review AND review.restaurant_id = restaurant.id)'
+            ),
+            'averageRating',
+          ],
+        ],
+      },
+    });
+
+    const posts = resultData.map((result) => result.get({ plain: true }));
+
+    res.render('results', { 
+      results, 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/restaurant/:id', async (req, res) => {
