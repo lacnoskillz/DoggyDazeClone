@@ -10,21 +10,22 @@
 </head>
 
 <body>
-  <div>
     <header>
       <h1>
-        <a href="/">Doggy🐾Daze</a>
+        <a class="title" href="/">Doggy🐾Daze</a>
       </h1>
       <nav>
-        <div>
+        <div id="navlinks">
         {{#if logged_in}}
-        <a href="/profile">Profile</a> |
-        <a href="/" id="logout">Logout</a>
+        <a class="links" href="/profile">PROFILE</a> |
+        <a class="links" href="/" id="logout">LOGOUT</a> |
+        <a class="links" href="/" id="home">HOME</a>
         </div>
         <div>
         {{else}}
-        <a href="/login">profile</a> |
-        <a href="/login">login</a>
+        <a class="links" href="/login">PROFILE</a> |
+        <a class="links" href="/login">LOGIN</a> |
+        <a class="links" href="/" id="home">HOME</a>
         </div>
         {{/if}}
       </nav>
@@ -33,9 +34,8 @@
       {{{ body }}}
     </main>
     <footer>
-      
+      <p>Happy Paws Happy Doggy🐾Daze</p>
     </footer>
-  </div>
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
