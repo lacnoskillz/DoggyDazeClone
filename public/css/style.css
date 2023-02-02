@@ -1,0 +1,99 @@
+header {
+    background-color: cadetblue;
+    padding: 15px;
+}
+
+html {
+    line-height: 1.15;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+
+}
+
+main {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+footer {
+    background-color: darkcyan;
+    height: 40px;
+    text-align: center;
+}
+
+a:link {
+    text-decoration: none;
+    color:black;
+}
+
+a:visited {
+    text-decoration: none;
+    color:black;
+}
+
+a:hover {
+    text-decoration:none;
+    color:crimson;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    line-height: 1.5;
+    padding: 8px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+button,
+input {
+    font-family: inherit;
+    /* 1 */
+    font-size: 100%;
+    /* 1 */
+    line-height: 1.15;
+    /* 1 */
+    margin: 0;
+    /* 2 */
+}
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
