@@ -5,15 +5,13 @@
     {{#if Reviews.length}}
     <div class="col-md-6 restaurant-list">
         <h3>REVIEWS:</h3>
-         {{#each Reviews as |review|}}
-         <div class="card">
-            <p>
-                {{review.description}}
-                {{rating}}
-            </p>
-            <p>Created by {{Reviews.[0].user.name}} on {{format_date date_created}}</p>
-         </div>
-         {{/each}}
+        {{#each Reviews as |review|}}
+        <div class="card">
+            <p>{{review.description}}</p>
+            <p>Rating: {{rating}}/10 🐾's</p>
+            <p>Review left by {{Reviews.[0].user.name}} on {{format_date date_created}}</p>
+        </div>
+        {{/each}}
     </div>
     {{/if}}
     <form class="new-review-form form">
@@ -21,6 +19,23 @@
             <label for="review">Write your review here:</label>
             <textarea class="form-input" id="review" name="review"></textarea>
         </div>
+        {{!-- slider --}}
+        <p>How dog friendly would you rate your experience here?</p>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
+            <p>Rating: <span id="demo"></span>/10 🐾's</p>
+        </div>
+        {{!-- slider end --}}
         <button type="submit" class="btn btn-primary">Add Review!</button>
     </form>
 </div>
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>

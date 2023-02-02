@@ -12,7 +12,10 @@
     {{#each Reviews as |review|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <p>{{description}} {{id}}</p>
+        <h3>{{review.Restaurant.restaurant_name}}</h3>
+        <h4>Rating:{{rating}}/10 🐾's<h4>
+        <p>{{format_date date_created}}</p>
+        <p>{{description}}</p>
       </div>
       <div class="col-md-4">
         {{!-- Will have an error if there arent any reviews to delete. Since it cant find any delete buttons to use.
