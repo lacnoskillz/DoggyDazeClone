@@ -22,7 +22,7 @@ Restaurant.init(
     sequelize,
     timestamps: false,
     freezeTableName: false,
-    underscored: true,
+    underscored: true
   }
 );
 

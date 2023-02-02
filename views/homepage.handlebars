@@ -1,21 +1,14 @@
 <div>
-  {{!-- TODO: Search bar: Once we have google API up and running --}}
-  {{!-- <div>
-    <input type="text" id="search" name="search"><br><br>
-    <button>search</button>
-  </div> --}}
   <h4>Click on a restaurant to see how dogfriendly they are!</h4>
   {{#each restaurants as |restaurant|}}
   <div>
-    <h2>
+    <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
-    </h2>
-    {{!-- <button>View all restaurants</button> --}}
+    </h4>
   </div>
-  {{/each}}
-  {{!-- (if we choose to keep because it will kinda do the same thing as the search button up top?) 
-  TODO: connect ability to post a review from the homepage:  --}}
-  {{!-- <div>
-    <button>Post a review</button>
-  </div> --}}
+        <div class="card-body">
+            <p>Average rating: {{averageRating}}</p>
+        </div>
+    </div>
+        {{/each}}
 </div>
