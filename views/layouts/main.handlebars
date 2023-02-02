@@ -12,19 +12,20 @@
 <body>
     <header>
       <h1>
-        <a href="/">Doggy🐾Daze</a>
+        <a class="title" href="/">Doggy🐾Daze</a>
       </h1>
       <nav>
         <div id="navlinks">
         {{#if logged_in}}
-        <a class="links" href="/profile">Profile</a> |
-        <a class="links" href="/" id="logout">Logout</a>
-        <a class="links" href="/" id="home">Home</a>
+        <a class="links" href="/profile">PROFILE</a> |
+        <a class="links" href="/" id="logout">LOGOUT</a> |
+        <a class="links" href="/" id="home">HOME</a>
         </div>
         <div>
         {{else}}
-        <a href="/login">profile</a> |
-        <a href="/login">login</a>
+        <a class="links" href="/login">PROFILE</a> |
+        <a class="links" href="/login">LOGIN</a> |
+        <a class="links" href="/" id="home">HOME</a>
         </div>
         {{/if}}
       </nav>

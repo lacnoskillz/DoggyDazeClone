@@ -3,6 +3,7 @@ header {
     text-align: center;
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
 }
 
 nav {
@@ -24,6 +25,14 @@ nav {
 
 .links {
     color:azure;
+    font-family: sans-serif;
+}
+
+.title,
+.restaurants {
+    color: black;
+    text-decoration: dotted;
+    font-family: sans-serif;
 }
 
 html {
@@ -39,6 +48,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: space-between;
+    font-family: sans-serif;
+    background-color: rgb(98, 173, 175);
 
 }
 
@@ -51,9 +62,16 @@ footer {
     background-color: darkcyan;
     height: 40px;
     text-align: center;
+    font-family: sans-serif;
 }
 
-a:link {
+.card {
+    font-family: sans-serif;
+    border-style: outset;
+    background-color: aliceblue;
+}
+
+/* a:link {
     text-decoration: none;
     color: black;
 }
@@ -66,16 +84,16 @@ a:visited {
 a:hover {
     text-decoration: none;
     color: crimson;
-}
+} */
 
-a:active {
+/* a:active {
     text-decoration: none;
-}
+} */
 
 p {
     font-size: 1.1rem;
     margin: 0 0 1rem;
-    line-height: 1.5;
+    line-height: 1;
     padding: 8px;
 }
 
