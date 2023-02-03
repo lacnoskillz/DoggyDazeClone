@@ -1,14 +1,22 @@
 <div>
   <h4>Click on a restaurant to see how dogfriendly they are!</h4>
+  <div>
+    <a class="new-restaurant" href="/new-restaurant">
+    <button>Post a review</button>
+    </a>
+  </div>
   {{#each restaurants as |restaurant|}}
   <div>
     <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
     </h4>
   </div>
-        <div class="card-body">
-            <p>Average rating: {{averageRating}}</p>
-        </div>
+    <div class="card-body">
+      {{#if averageRating}}
+      <p>Average rating: {{averageRating}} 🐾</p>
+      {{else}}
+      <p>No reviews yet, leave your own!</p>
+      {{/if}}
     </div>
-        {{/each}}
+    {{/each}}
 </div>
