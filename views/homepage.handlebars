@@ -12,7 +12,11 @@
     </h4>
   </div>
     <div class="card-body">
-      <p>Average rating: {{averageRating}}</p>
+      {{#if averageRating}}
+      <p>Average rating: {{averageRating}} 🐾</p>
+      {{else}}
+      <p>No reviews yet, leave your own!</p>
+      {{/if}}
     </div>
     {{/each}}
 </div>
