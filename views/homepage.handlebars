@@ -6,9 +6,16 @@
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
     </h4>
   </div>
-        <div class="card-body">
-            <p>Average rating: {{averageRating}}</p>
-        </div>
+    <div class="card-body">
+      <p>Average rating: {{averageRating}}</p>
     </div>
-        {{/each}}
+    {{/each}}
+    <div>
+      
+
+
+      <script async
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+      </script>
+    </div>
 </div>
