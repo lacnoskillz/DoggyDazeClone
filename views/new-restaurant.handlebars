@@ -1,0 +1,38 @@
+<div>
+    <div>
+        <h2>Add a new Restaurant</h2>
+        <p>Search for the restaurant you want to add</p>
+    </div>
+    <form class="form search-form">
+        <div>
+            <div class="form-group">
+                <input class="form-input" type="text" id="search" />
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <iframe id="map-frame"
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs&q=${search}+(Restaurant),San+Antonio+TX">
+        </iframe>
+    </div>
+    <form class="confirm">
+    <div>
+        <h4>Selected Restaurant:</h4>
+        <p id="result"></p>
+        <div>
+            <button class="btn btn-primary" type="submit">Add this Restaurant</button>
+        </div>
+    </div>
+    </form>
+  </div>
+  <script src="./js/search.js"></script>
+</div>

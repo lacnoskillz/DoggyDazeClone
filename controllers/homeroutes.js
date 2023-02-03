@@ -123,4 +123,8 @@ router.get('/signup', async (req, res) => {
   res.render('signup');
 });
 
+router.get('/new-restaurant', async (req, res) => {
+  res.render('new-restaurant');
+});
+
 module.exports = router;
