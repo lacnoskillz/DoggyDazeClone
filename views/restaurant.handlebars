@@ -1,6 +1,19 @@
 <div class="text-center">
     <h2>{{restaurant_name}}</h2>
+    <iframe
+      width="600"
+      height="450"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs&q={{restaurant_name}}+(Restaurant),San+Antonio+TX">
+    </iframe>
+    {{#if averageRating}}
     <p>OVERALL RATING: {{averageRating}}/10 🐾's</p>
+    {{else}}
+    <p>No reviews yet, leave your own!</p>
+    {{/if}}
     {{!-- Render reviews --}}
     {{#if Reviews.length}}
     <div class="col-md-6 restaurant-list">
@@ -14,6 +27,7 @@
         {{/each}}
     </div>
     {{/if}}
+    {{#if logged_in}}
     <form class="new-review-form form">
         <div class="form-group">
             <label for="review">Write your review here:</label>
@@ -41,6 +55,11 @@
         </div>
         {{!-- check all that apply end --}}
     </form>
+    {{else}}
+    <div>
+        <p>Log in to leave a review</p>
+    </div>
+    {{/if}}
 </div>
 
 <script>

@@ -22,8 +22,7 @@ router.get('/', async (req, res) => {
     const restaurants = restaurantData.map((restaurant) => restaurant.get({ plain: true }));
     res.render('homepage', {
       restaurants,
-      logged_in: req.session.logged_in,
-
+      logged_in: req.session.logged_in
     });
     //res.status(200).json(restaurantData);
   } catch (err) {
@@ -122,6 +121,12 @@ router.get('/restaurant/:id', async (req, res) => {
 
 router.get('/signup', async (req, res) => {
   res.render('signup');
+});
+
+router.get('/new-restaurant', async (req, res) => {
+  res.render('new-restaurant', {
+    logged_in: req.session.logged_in
+  });
 });
 
 module.exports = router;
