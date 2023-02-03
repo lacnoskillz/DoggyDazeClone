@@ -27,15 +27,28 @@
         </div>
         {{!-- slider end --}}
         <button type="submit" class="btn btn-primary">Add Review!</button>
+        {{!-- check all that apply --}}
+        <div>
+            Check all that apply:<br>
+            <input type="checkbox" name="pets" value="1"> Dogs are allowed for inside seating<br>
+            <input type="checkbox" name="pets" value="2"> Dogs are allowed for outside seating<br>
+            <input type="checkbox" name="pets" value="3"> Dog play area/ dog playground<br>
+            <input type="checkbox" name="pets" value="4"> Water bowls provided upon request<br>
+            <input type="checkbox" name="pets" value="5"> Treats available<br>
+            <input type="checkbox" name="pets" value="6"> Allows dog birthday celebrations<br>
+            <input type="checkbox" name="pets" value="7"> Dog menu<br>
+
+        </div>
+        {{!-- check all that apply end --}}
     </form>
 </div>
 
 <script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
 </script>
