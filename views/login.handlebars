@@ -31,18 +31,27 @@
 
 <script>
 var recaptcha_response = '';
+//
 function submitUserForm() {
-    if(recaptcha_response.length == 0) {
+    if(recaptcha_response.length == 0 ) {
         document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
         return false;
     }
     return true;
 }
- 
+ //if captcha is verrified start login form handler
 function verifyCaptcha(token) {
+  let name2 = document.querySelector('#email-login').value.trim();
+  let password2 = document.querySelector('#password-login').value.trim();
+  if(name2 && password2){
     recaptcha_response = token;
     document.getElementById('g-recaptcha-error').innerHTML = '';
     loginFormHandler();
+}
+else{
+  alert("Need to enter a Valid username and password")
+  document.location.reload('/login')
+}
 }
 const loginFormHandler = async (event) => {
   {{!-- event.preventDefault(); --}}
@@ -62,7 +71,9 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
+      //bad request reload login page
       alert(response.statusText);
+      alert('Incorect username or password')
       document.location.reload('/login')
     }
   }
