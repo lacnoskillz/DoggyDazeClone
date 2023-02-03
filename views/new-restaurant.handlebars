@@ -1,4 +1,5 @@
 <div>
+    {{#if logged_in}}
     <div>
         <h2>Add a new Restaurant</h2>
         <p>Search for the restaurant you want to add</p>
@@ -33,6 +34,11 @@
         </div>
     </div>
     </form>
+    {{else}}
+    <div>
+        <p>You must <a href="/login">log in</a> to add a new restaurant</p>
+    </div>
+    {{/if}}
   </div>
   <script src="./js/search.js"></script>
 </div>
