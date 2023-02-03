@@ -1,6 +1,5 @@
 const newReviewHandler = async (event) => {
     event.preventDefault();
-    console.log("hello?");
 
     const description = document.querySelector('#review').value.trim();
     const rating = document.querySelector('#myRange').value
@@ -9,7 +8,6 @@ const newReviewHandler = async (event) => {
         const restaurant_id = document.URL.split('/').at(-1);
         console.log(description)
         const rating = document.getElementById('myRange').value.trim();
-        console.log(rating,"here");
         //send a POST request to the API endpoint
         const response = await fetch('/api/reviews', {
             method: 'POST',

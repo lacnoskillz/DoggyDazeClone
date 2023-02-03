@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       restaurants,
       logged_in: req.session.logged_in,
+
     });
     //res.status(200).json(restaurantData);
   } catch (err) {
