@@ -1,5 +1,5 @@
 <div>
-  <div class="card">
+  <div>
     <h2>Login</h2>
 
     <form class="form login-form">
@@ -12,11 +12,64 @@
         <input class="form-input" type="password" id="password-login" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
       </div>
     </form>
   </div>
 </div>
+
+
+
+
+<form method="post" onsubmit="return submitUserForm();">
+    <div class="g-recaptcha" data-sitekey="6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP" data-callback="verifyCaptcha"></div>
+    <div id="g-recaptcha-error"></div>
+    <input type="submit" name="submit" value="Submit" />
+</form>
+
+
+
+
+<script>
+var recaptcha_response = '';
+function submitUserForm() {
+    if(recaptcha_response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        return false;
+    }
+    return true;
+}
+ 
+function verifyCaptcha(token) {
+    recaptcha_response = token;
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+    loginFormHandler();
+}
+const loginFormHandler = async (event) => {
+  {{!-- event.preventDefault(); --}}
+
+  // Collect values from the login form
+  const name = document.querySelector('#email-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
+  if (name && password) {
+    // Send a POST request to the API endpoint
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ name, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+      document.location.reload('/login')
+    }
+  }
+};
+
+
+</script>
 
 <div class= "card col-md-6">
   <h2>Signup</h2>
