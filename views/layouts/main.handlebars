@@ -18,15 +18,16 @@
       <nav>
         <div id="navlinks">
         {{#if logged_in}}
+        <a class="links" href="/" id="home">HOME</a> |
         <a class="links" href="/profile">PROFILE</a> |
-        <a class="links" href="/" id="logout">LOGOUT</a> |
-        <a class="links" href="/" id="home">HOME</a>
+        <a class="links" href="/" id="logout">LOGOUT</a>
+        
         </div>
         <div>
         {{else}}
+        <a class="links" href="/" id="home">HOME</a> |
         <a class="links" href="/login">PROFILE</a> |
-        <a class="links" href="/login">LOGIN</a> |
-        <a class="links" href="/" id="home">HOME</a>
+        <a class="links" href="/login">LOGIN</a>
         </div>
         {{/if}}
       </nav>

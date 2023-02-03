@@ -1,10 +1,12 @@
 <div>
   <h4>Click on a restaurant to see how dogfriendly they are!</h4>
+  {{#if logged_in}}
   <div>
     <a class="new-restaurant" href="/new-restaurant">
-    <button>Post a review</button>
+    <button>Add a new restaurant</button>
     </a>
   </div>
+  {{/if}}
   {{#each restaurants as |restaurant|}}
   <div>
     <h4>

@@ -27,6 +27,7 @@
         {{/each}}
     </div>
     {{/if}}
+    {{#if logged_in}}
     <form class="new-review-form form">
         <div class="form-group">
             <label for="review">Write your review here:</label>
@@ -41,6 +42,10 @@
         {{!-- slider end --}}
         <button type="submit" class="btn btn-primary">Add Review!</button>
     </form>
+    {{/if}}
+    <div>
+        <p>Log in to leave a review</p>
+    </div>
 </div>
 
 <script>
