@@ -49,7 +49,7 @@ function verifyCaptcha(token) {
     loginFormHandler();
 }
 else{
-  alert("Need to enter a Valid username and password")
+  alert("Need to enter a Valid Username and Password")
   document.location.reload('/login')
 }
 }
@@ -72,7 +72,7 @@ const loginFormHandler = async (event) => {
       document.location.replace('/profile');
     } else {
       //bad request reload login page
-      alert(response.statusText);
+     // alert(response.statusText);
       alert('Incorect username or password')
       document.location.reload('/login')
     }
