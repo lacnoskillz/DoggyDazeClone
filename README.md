@@ -6,6 +6,7 @@ Doggy Daze was made so dog owners can find the best resaurants for themselves an
 for users to make reviews and see how dog friendly restaurants are!
 ### Technologys
 ***
+* sendgrid api
 * recaptcha api
 * google maps api
 * express-handlebars
@@ -18,7 +19,7 @@ for users to make reviews and see how dog friendly restaurants are!
 * Github.com
 * Slack
 * Zoom
-### Contributers
+### Contributors
 * [Rosalva Martinez](https://github.com/RosalvaMartinez)
 * [Michael Dinkelbach](https://github.com/mdinkelbach)
 * [Kaikane Lacno](https://github.com/lacnoskillz)
