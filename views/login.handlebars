@@ -1,10 +1,10 @@
-<div>
+<div class ="card col-md-6">
   <div>
     <h2>Login</h2>
 
     <form class="form login-form">
       <div class="form-group">
-        <label for="email-login">Name:</label>
+        <label for="email-login">Email:</label>
         <input class="form-input" type="text" id="email-login" />
       </div>
       <div class="form-group">
@@ -15,7 +15,7 @@
       </div>
     </form>
   </div>
-</div>
+
 
 
 
@@ -23,10 +23,10 @@
 <form method="post" onsubmit="return submitUserForm();">
     <div class="g-recaptcha" data-sitekey="6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP" data-callback="verifyCaptcha"></div>
     <div id="g-recaptcha-error"></div>
-    <input type="submit" name="submit" value="Submit" />
+    <input type="submit" name="submit" value="Login" />
 </form>
 
-
+</div>
 
 
 <script>
@@ -49,7 +49,7 @@ function verifyCaptcha(token) {
     loginFormHandler();
 }
 else{
-  alert("Need to enter a Valid Username and Password")
+  alert("Need to enter a Valid Email and Password")
   document.location.reload('/login')
 }
 }
@@ -57,13 +57,13 @@ const loginFormHandler = async (event) => {
   {{!-- event.preventDefault(); --}}
 
   // Collect values from the login form
-  const name = document.querySelector('#email-login').value.trim();
+  const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
-  if (name && password) {
+  if (email && password) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
