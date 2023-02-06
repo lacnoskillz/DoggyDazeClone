@@ -36,6 +36,22 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+router.post('/reviewcheck', async (req,res) =>{
+
+  try{
+    const checkReview = await Review.findByPk({
+        user_id: req.session.user_id,
+  
+      });
+      if(checkReview.restaurant_id == req.params.restaurant_id){
+        res.status(404)
+      }
+      res.status(200).json(checkReview);
+  }catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const reviewData = await Review.destroy({

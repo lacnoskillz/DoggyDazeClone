@@ -1,3 +1,28 @@
+const prenewReviewHandler = async(event) => {
+    event.preventDefault();
+    const restaurant_id = document.URL.split('/').at(-1);
+    
+        const response2 = await fetch('/api/reviewcheck', {
+            method: 'POST',
+            body: JSON.stringify({ restaurant_id }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }); if (response2.ok) {
+             console.log(response2,"2")
+            newReviewHandler();
+         } else {
+             alert('not good');
+         }
+    }
+
+
+
+
+
+
+
+
 const newReviewHandler = async (event) => {
     event.preventDefault();
 
@@ -29,7 +54,8 @@ const newReviewHandler = async (event) => {
 if (document.querySelector('.new-review-form')) {
     document
         .querySelector('.new-review-form')
-        .addEventListener('submit', newReviewHandler)
+        .addEventListener('submit', prenewReviewHandler)
 };
+
 
 
