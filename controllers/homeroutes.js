@@ -46,12 +46,12 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Review, include: [{model: User}] }],
+      include: [{ model: Review, include: [{ model: User }] }],
       include: [{
         model: Review,
         include: [
-          {model: Restaurant}
-        ] 
+          { model: Restaurant }
+        ]
       }]
     });
 
@@ -96,7 +96,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/restaurant/:id', async (req, res) => {
   try {
     const restaurantData = await Restaurant.findByPk(req.params.id, {
-      include: [{ model: Review, include: [{model: User}] }],
+      include: [{ model: Review, include: [{ model: User }] }],
       attributes: {
         include: [
           [
@@ -109,8 +109,19 @@ router.get('/restaurant/:id', async (req, res) => {
       },
     });
     const restaurant = restaurantData.get({ plain: true });
-    
+    //const amenities = []
+    if (restaurant.Reviews.length) {
+      restaurant.Reviews.forEach(review => {
+        //amenities.push(JSON.parse(review.amenities))
+        //change the amenities string to a parsed object in each review
+        review.amenities = JSON.parse(review.amenities)
+      });
+    }
+    console.log(restaurant)
+
+    //console.log(amenities)
     res.render('restaurant', {
+      //amenities: amenities,
       ...restaurant,
       logged_in: req.session.logged_in
     });

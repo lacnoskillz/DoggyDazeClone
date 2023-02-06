@@ -23,6 +23,9 @@
             <p>"{{review.description}}"</p>
             <p>Rating: {{rating}}/10 🐾's</p>
             <p>Review left by {{User.name}} on {{format_date date_created}}</p>
+            {{#each review.amenities as |amenity|}}
+                <li>{{amenity.item}} {{#if amenity.selected}}✔️{{else}}❌{{/if}}</li>
+            {{/each}}
         </div>
         {{/each}}
     </div>
@@ -40,7 +43,19 @@
             <p>Rating: <span id="demo"></span>/10 🐾's</p>
         </div>
         {{!-- slider end --}}
+        <div id="item-form">
+            Check all that apply:<br>
+            <input type="checkbox" name="pets" value="Dogs are allowed for inside seating"> Dogs are allowed for inside seating<br>
+            <input type="checkbox" name="pets" value="Dogs are allowed for outside seating"> Dogs are allowed for outside seating<br>
+            <input type="checkbox" name="pets" value="Dog play area/ dog playground"> Dog play area/ dog playground<br>
+            <input type="checkbox" name="pets" value="Water bowls provided upon request"> Water bowls provided upon request<br>
+            <input type="checkbox" name="pets" value="Treats available"> Treats available<br>
+            <input type="checkbox" name="pets" value="Allows dog birthday celebrations"> Allows dog birthday celebrations<br>
+            <input type="checkbox" name="pets" value="Dog menu"> Dog menu<br>
+
+        </div>
         <button type="submit" class="btn btn-primary">Add Review!</button>
+        {{!-- check all that apply end --}}
     </form>
     {{else}}
     <div>
@@ -50,11 +65,11 @@
 </div>
 
 <script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
 </script>
