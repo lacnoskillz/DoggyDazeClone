@@ -13,9 +13,11 @@ const newReviewHandler = async (event) => {
         }
         amenities.push(data); //stored the objects to result array
     });
-
+    
+    console.log('---------------------------------------------------')
+    console.log(amenities[1])
+    console.log('---------------------------------------------------')
 amenities = JSON.stringify(amenities)
-console.log(amenities)
 if (description && rating && amenities) {
     const restaurant_id = document.URL.split('/').at(-1);
     console.log(description)

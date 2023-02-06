@@ -1,3 +1,5 @@
 node_modules
 .env
 .DS_Storesendgrid.env
+sendgrid.env
+sendgrid.env
