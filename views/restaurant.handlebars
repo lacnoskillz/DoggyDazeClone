@@ -23,7 +23,9 @@
             <p>"{{review.description}}"</p>
             <p>Rating: {{rating}}/10 🐾's</p>
             <p>Review left by {{User.name}} on {{format_date date_created}}</p>
-            <p>{{review.amenities}}</p>
+            {{#each review.amenities as |amenity|}}
+                <li>{{amenity.item}} {{#if amenity.selected}}✔️{{else}}❌{{/if}}</li>
+            {{/each}}
         </div>
         {{/each}}
     </div>
@@ -43,13 +45,13 @@
         {{!-- slider end --}}
         <div id="item-form">
             Check all that apply:<br>
-            <input type="checkbox" name="pets" value="1"> Dogs are allowed for inside seating<br>
-            <input type="checkbox" name="pets" value="2"> Dogs are allowed for outside seating<br>
-            <input type="checkbox" name="pets" value="3"> Dog play area/ dog playground<br>
-            <input type="checkbox" name="pets" value="4"> Water bowls provided upon request<br>
-            <input type="checkbox" name="pets" value="5"> Treats available<br>
-            <input type="checkbox" name="pets" value="6"> Allows dog birthday celebrations<br>
-            <input type="checkbox" name="pets" value="7"> Dog menu<br>
+            <input type="checkbox" name="pets" value="Dogs are allowed for inside seating"> Dogs are allowed for inside seating<br>
+            <input type="checkbox" name="pets" value="Dogs are allowed for outside seating"> Dogs are allowed for outside seating<br>
+            <input type="checkbox" name="pets" value="Dog play area/ dog playground"> Dog play area/ dog playground<br>
+            <input type="checkbox" name="pets" value="Water bowls provided upon request"> Water bowls provided upon request<br>
+            <input type="checkbox" name="pets" value="Treats available"> Treats available<br>
+            <input type="checkbox" name="pets" value="Allows dog birthday celebrations"> Allows dog birthday celebrations<br>
+            <input type="checkbox" name="pets" value="Dog menu"> Dog menu<br>
 
         </div>
         <button type="submit" class="btn btn-primary">Add Review!</button>

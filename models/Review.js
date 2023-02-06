@@ -31,7 +31,7 @@ Review.init(
       defaultValue: DataTypes.NOW,
     },
     amenities: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT('long'),
     },
     restaurant_id: {
       type: DataTypes.INTEGER,

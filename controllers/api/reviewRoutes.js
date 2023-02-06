@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    console.log(req.body)
+    //console.log(req.body)
     const newReview = await Review.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -33,6 +33,9 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newReview);
   } catch (err) {
+    console.log(
+err
+    )
     res.status(400).json(err);
   }
 });
