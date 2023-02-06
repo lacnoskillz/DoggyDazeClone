@@ -18,7 +18,7 @@ for users to make reviews and see how dog friendly restaurants are!
 * Github.com
 * Slack
 * Zoom
-### Contributers
+### Contributors
 * [Rosalva Martinez](https://github.com/RosalvaMartinez)
 * [Michael Dinkelbach](https://github.com/mdinkelbach)
 * [Kaikane Lacno](https://github.com/lacnoskillz)

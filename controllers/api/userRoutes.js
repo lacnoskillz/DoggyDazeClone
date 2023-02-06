@@ -1,11 +1,26 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 //new
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
-
+    const msg = {
+      to: req.body.email, // Change to your recipient
+      from: 'rosalvahmartinez@gmail.com', // Change to your verified sender
+      subject: 'Sending with SendGrid is Fun',
+      text: 'Thank You ' + req.body.name + ' for signing up with Doggy Daze!'
+    }
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
