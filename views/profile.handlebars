@@ -17,7 +17,7 @@
         </a>
         <h4>Rating: {{rating}}/10 🐾's<h4>
         <p>Posted on: {{format_date date_created}}</p>
-        <p>{{description}}</p>
+        <p>"{{description}}"</p>
       </div>
       <div class="col-md-4">
         {{!-- Will have an error if there arent any reviews to delete. Since it cant find any delete buttons to use.
@@ -27,6 +27,9 @@
     </div>
     {{/each}}
   </div>
+  {{else}}
+  <img src="https://i.imgflip.com/2/4rsexl.jpg" alt="its empty">
+  
   {{/if}}
 </div>
 
