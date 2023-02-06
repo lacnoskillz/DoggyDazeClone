@@ -110,7 +110,6 @@ router.get('/restaurant/:id', async (req, res) => {
     });
     const restaurant = restaurantData.get({ plain: true });
     //const amenities = []
-    console.log(restaurant)
     if (restaurant.Reviews.length) {
       restaurant.Reviews.forEach(review => {
         //amenities.push(JSON.parse(review.amenities))
@@ -118,7 +117,9 @@ router.get('/restaurant/:id', async (req, res) => {
         review.amenities = JSON.parse(review.amenities)
       });
     }
-    console.log(amenities)
+    console.log(restaurant)
+
+    //console.log(amenities)
     res.render('restaurant', {
       //amenities: amenities,
       ...restaurant,

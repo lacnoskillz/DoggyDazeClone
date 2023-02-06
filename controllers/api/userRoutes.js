@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     const userData = await User.create(req.body);
     const msg = {
       to: req.body.email, // Change to your recipient
-      from: 'doggydazeUTSA@outlook.com', // Change to your verified sender
+      from: 'rosalvahmartinez@gmail.com', // Change to your verified sender
       subject: 'Sending with SendGrid is Fun',
       text: 'Thank You ' + req.body.name + ' for signing up with Doggy Daze!'
     }
