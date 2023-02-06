@@ -30,6 +30,9 @@ Review.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    amenities: {
+      type: DataTypes.STRING,
+    },
     restaurant_id: {
       type: DataTypes.INTEGER,
       //References the Restaurant model's id.

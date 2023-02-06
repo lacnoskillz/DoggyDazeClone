@@ -109,7 +109,11 @@ router.get('/restaurant/:id', async (req, res) => {
       },
     });
     const restaurant = restaurantData.get({ plain: true });
-    
+    // if (restaurant.Reviews.length) {
+    //   restaurant.Reviews.forEach(review =>{ 
+    //     review.amenities = JSON.parse(review.amenities)
+    //   });
+    // }
     res.render('restaurant', {
       ...restaurant,
       logged_in: req.session.logged_in
