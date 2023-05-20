@@ -6,29 +6,12 @@ header {
     font-family: sans-serif;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
 
-#navlinks {
-    padding: 8px;
-    
-}
 
-.links {
-    color:azure;
-    font-family: sans-serif;
-}
 
-.title,
+
+
+
 .restaurants {
     color: black;
     text-decoration: dotted;
