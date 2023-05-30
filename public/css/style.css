@@ -7,7 +7,11 @@ h1{
     width: 200px;
 }
 
-
+nav{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
 footer {
     background-color: darkcyan;
     height: 40px;
@@ -39,11 +43,23 @@ a{
 }
 
 
+body {
+    background-color: black;
+}
+.restaurantdiv{
+    border: 1px solid black;
+}
 
 
-
-
-
+.homepagecontainer{
+    background-color: #008B8B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   border: 1px solid white
+    
+    
+}
 
 
 
