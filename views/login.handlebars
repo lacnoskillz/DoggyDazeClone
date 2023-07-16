@@ -1,3 +1,4 @@
+<div class="loginholder">
 <div class ="card col-md-6">
   <div>
     <h2>Login</h2>
@@ -21,14 +22,36 @@
 
 
 <form method="post" onsubmit="return submitUserForm();">
-    <div class="g-recaptcha" data-sitekey="6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP" data-callback="verifyCaptcha"></div>
+    <div class="g-recaptcha"  data-sitekey="6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP" data-callback="verifyCaptcha"></div>
     <div id="g-recaptcha-error"></div>
-    <input type="submit" name="submit" value="Login" />
+    <input type="submit" name="submit" value="Login" class="btn btn-primary" />
 </form>
 
 </div>
 
+<div class= "card col-md-6">
+  <h2>Signup</h2>
 
+  <form class="form signup-form">
+    <div class="form-group">
+      <label for="name-signup">Name:</label>
+      <input class="form-input" type="text" id="name-signup" />
+    </div>
+    <div class="form-group">
+      <label for="email-signup">Email:</label>
+      <input class="form-input" type="email" id="email-signup" />
+    </div>
+    <div class="form-group">
+      <label for="password-signup">Password:</label>
+      <input class="form-input" type="password" id="password-signup" />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Signup</button>
+    </div>
+  </form>
+</div>
+</div>
+<script src="./js/login.js"></script>
 <script>
 var recaptcha_response = '';
 //
@@ -81,27 +104,3 @@ const loginFormHandler = async (event) => {
 
 
 </script>
-
-<div class= "card col-md-6">
-  <h2>Signup</h2>
-
-  <form class="form signup-form">
-    <div class="form-group">
-      <label for="name-signup">Name:</label>
-      <input class="form-input" type="text" id="name-signup" />
-    </div>
-    <div class="form-group">
-      <label for="email-signup">Email:</label>
-      <input class="form-input" type="email" id="email-signup" />
-    </div>
-    <div class="form-group">
-      <label for="password-signup">Password:</label>
-      <input class="form-input" type="password" id="password-signup" />
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">Signup</button>
-    </div>
-  </form>
-</div>
-
-<script src="./js/login.js"></script>

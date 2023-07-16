@@ -7,8 +7,11 @@
     </a>
   </div>
   {{/if}}
+   <div class="restaurantdiv">
+    
   {{#each restaurants as |restaurant|}}
-  <div class="restaurantdiv">
+  <div class="Singlerestaurant">
+  
     <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
     </h4>
@@ -20,6 +23,8 @@
       <p>No reviews yet, leave your own!</p>
       {{/if}}
     </div>
+    </div>
     {{/each}}
+    
     </div>
 </div>
