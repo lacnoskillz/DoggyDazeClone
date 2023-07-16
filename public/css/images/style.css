@@ -1,0 +1,138 @@
+h1{
+    text-align: center;
+    
+}
+#suchwow{
+    height: 200px;
+    width: 200px;
+}
+
+nav{
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+ul{
+    background-color: #97FEED;
+}
+footer {
+    background-color: #071952;
+    height: 40px;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+}
+
+header{
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0B666A;
+    
+}
+
+ .nav-link{
+    color:black !important;
+   border-bottom: 20%;
+ }
+ 
+ .nav-link:hover{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    
+ }
+ .text-center{
+    background-color: #35A29F;
+ }
+a{
+    color:black !important;
+    text-decoration: none !important;
+}
+
+
+body {
+    background-color: black;
+}
+.restaurantdiv{
+    padding: 1%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.Singlerestaurant{
+    
+    border: 1px solid black
+}
+
+
+.homepagecontainer{
+    background-color: #35A29F;
+   
+   
+   border: 1px solid white
+    
+    
+}
+.reviewdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginholder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   padding: 1%;
+   
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+/* login style */
+.loginholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  }
+
+  .card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  
+
+  
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }

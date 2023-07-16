@@ -1,3 +1,4 @@
+
 <div class="text-center">
     <h2>{{restaurant_name}}</h2>
     <iframe
@@ -16,10 +17,10 @@
     {{/if}}
     {{!-- Render reviews --}}
     {{#if Reviews.length}}
-    <div class="col-md-6 restaurant-list">
+    <div class="reviewdiv">
         <h5>REVIEWS:</h5>
         {{#each Reviews as |review|}}
-        <div class="card">
+        <div class="card mb-3 w-50">
             <p>"{{review.description}}"</p>
             <p>Rating: {{rating}}/10 🐾's</p>
             <p>Review left by {{User.name}} on {{format_date date_created}}</p>
