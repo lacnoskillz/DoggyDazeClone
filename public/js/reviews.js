@@ -24,7 +24,7 @@ const prenewReviewHandler = async(event) => {
 
 
 const newReviewHandler = async (event) => {
-    event.preventDefault();
+    
 
     const description = document.querySelector('#review').value.trim();
     const rating = document.querySelector('#myRange').value

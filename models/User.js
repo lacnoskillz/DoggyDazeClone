@@ -12,7 +12,7 @@ class User extends Model {
 
 User.init(
   {
-    // define columns
+    // define columns 6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
