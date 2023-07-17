@@ -10,15 +10,23 @@
    <div class="restaurantdiv">
     
   {{#each restaurants as |restaurant|}}
-  <div class="Singlerestaurant">
+  <div class="Singlerestaurant" data-image="./css/images/stockres2.jpg" >
   
     <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
     </h4>
-  
+  {{!-- <iframe
+      width="75%"
+      height="400px"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs&q={{restaurant.restaurant_name}}+(Restaurant),San+Antonio+TX">
+    </iframe> --}}
     <div class="card-body">
       {{#if averageRating}}
-      <p>Average rating: {{averageRating}} 🐾</p>
+      <p id="ratingp">Average rating: {{averageRating}} 🐾</p>
       {{else}}
       <p>No reviews yet, leave your own!</p>
       {{/if}}

@@ -11,7 +11,7 @@ nav{
   
 }
 ul{
-    background-color: #97FEED;
+    background-color: #35A29F;
     
 }
 footer {
@@ -67,14 +67,24 @@ flex-wrap: wrap;
     
 }
 .Singlerestaurant{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 50vh;
     height: 50vh;
     border: 1px solid black;
     padding: 1%;
     margin: 1%;
+    /* background-image: url('https://thumbs.dreamstime.com/b/cafe-series-11138951.jpg');
+  background-size: cover;
+  background-position: center; */
 }
-
+#ratingp{
+    display: block;
+    background-color: #97FEED;
+}
 
 .homepagecontainer{
     

@@ -13,7 +13,7 @@ const searchHandler = async (event) => {
         result.innerHTML = `${search}`
     }
   };
-
+//AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs
 const addRestaurantHandler = async (event) => {
     
     event.preventDefault();
