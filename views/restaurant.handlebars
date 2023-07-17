@@ -1,9 +1,9 @@
 
 <div class="text-center">
-    <h2>{{restaurant_name}}</h2>
+    <h2 class="Singleresname">{{restaurant_name}}</h2>
     <iframe
-      width="600"
-      height="450"
+      width="75%"
+      height="400px"
       style="border:0"
       loading="lazy"
       allowfullscreen
@@ -20,7 +20,7 @@
     <div class="reviewdiv">
         <h5>REVIEWS:</h5>
         {{#each Reviews as |review|}}
-        <div class="card mb-3 w-50">
+        <div class="card mb-3 w-75">
             <p>"{{review.description}}"</p>
             <p>Rating: {{rating}}/10 🐾's</p>
             <p>Review left by {{User.name}} on {{format_date date_created}}</p>
@@ -32,8 +32,9 @@
     </div>
     {{/if}}
     {{#if logged_in}}
+    <div class="formdiv">
     <form class="new-review-form form">
-        <div class="form-group">
+        <div class="form-group" >
             <label for="review">Write your review here:</label>
             <textarea class="form-input" id="review" name="review"></textarea>
         </div>
@@ -58,6 +59,7 @@
         <button type="submit" class="btn btn-primary">Add Review!</button>
         {{!-- check all that apply end --}}
     </form>
+    </div>
     {{else}}
     <div>
         <p>Log in to leave a review</p>
@@ -68,9 +70,11 @@
 <script>
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
+    if(slider){
     output.innerHTML = slider.value;
-
-    slider.oninput = function () {
+     slider.oninput = function () {
         output.innerHTML = this.value;
     }
+    }
+   
 </script>

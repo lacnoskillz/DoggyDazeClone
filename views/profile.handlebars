@@ -1,38 +1,38 @@
 <div id="profilecontainer">
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}} to your profile!</h2>
-  </div>
-</div>
-
-<div class="row mt-4" id="reviewscontainer">
-  {{#if Reviews.length}}
-  <div class="col-md-6 review-list">
-    <h3>Your Reviews:</h3>
-
-    {{#each Reviews as |review|}}
-    <div class= "card row mb-2 w-75">
-      <div class="col-md-8">
-        <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
-        <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
-        </a>
-        <h4>Rating: {{rating}}/10 🐾's<h4>
-        <p>Posted on: {{format_date date_created}}</p>
-        <p>"{{description}}"</p>
-      </div>
-      <div class="col-md-4">
-        {{!-- Will have an error if there arent any reviews to delete. Since it cant find any delete buttons to use.
-        --}}
-        <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
-      </div>
+  <div class="row">
+    <div >
+      <h2 id="welcomeh2">Hello {{name}}! Welcome to your profile!</h2>
     </div>
-    {{/each}}
   </div>
-  {{else}}
-  <img src="https://i.imgflip.com/2/4rsexl.jpg" id="suchwow" alt="its empty">
-  
-  {{/if}}
+
+  <div class="mt-4" id="reviewscontainer">
+    {{#if Reviews.length}}
+    <h3 class="Profileh3">Your Reviews:</h3>
+    <div class="review-list">
+      
+
+      {{#each Reviews as |review|}}
+      
+        <div class="card mb-2 w-75">
+          <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
+            <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
+          </a>
+          <h4 class="reviewcardh4">Rating: {{rating}}/10 🐾's</h4>
+          <p>Posted on: {{format_date date_created}}</p>
+          <p>"{{description}}"</p>
+          <div class="col-md-4">
+          <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
+        </div>
+        </div>
+        
+      
+      {{/each}}
+    </div>
+    {{else}}
+    <img src="https://i.imgflip.com/2/4rsexl.jpg" id="suchwow" alt="its empty">
+    {{/if}}
+  </div>
 </div>
-</div>
+
 
 <script src="./js/profile.js"></script>

@@ -2,7 +2,10 @@ h1{
     text-align: center;
     
 }
-
+#homeh2{
+    padding-top: 8%;
+    text-align: center;
+}
 nav{
     border: 1px solid black;
   
@@ -43,7 +46,7 @@ header{
     
  }
  .text-center{
-    background-color: #35A29F;
+    border: 1px black solid
  }
 a{
     color:black !important;
@@ -108,12 +111,13 @@ h2 {
 
 h3 {
     font-size: 1.75rem;
+    
 }
 
 h4 {
-    padding-top: 8%;
+    
     font-size: 1.5rem;
-    text-align: center;
+    
 }
 
 h5 {
@@ -170,11 +174,32 @@ h6 {
 #reviewscontainer{
    
 }
-/* .review-list{
+.review-list{
     display: flex;
-    justify-self: center;
+   flex-wrap: wrap;
+   justify-content: center;
     
-} */
+}
 .card {
   
+}
+.Profileh3{
+text-align: center;
+}
+#welcomeh2{
+    margin-top: 8%;
+    text-align: center;
+    
+}
+/* add reviews/ view reviews on single res */
+.formdiv{
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid black;
+   
+}
+.Singleresname{
+    margin-top: 8%;
+    text-align: center;
 }
