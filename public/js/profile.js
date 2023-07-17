@@ -22,7 +22,7 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
+  if (event.target.classList.contains('delete')) {
     const id = event.target.getAttribute('data-id');
 
     const response = await fetch(`/api/reviews/${id}`, {
@@ -36,16 +36,19 @@ const delButtonHandler = async (event) => {
     }
   }
 };
-
 // document
 //   .querySelector('.new-review-form')
 //   .addEventListener('submit', newFormHandler);
 
 
 //wrap in an if so we dont get errors
-if (document.querySelector('.delete')) {
-  document
-    .querySelector('.delete')
-    .addEventListener('click', delButtonHandler);
-};
+//assign listener to ALL delete buttons
+document.addEventListener('DOMContentLoaded', function() {
+  const deleteButtons = document.querySelectorAll('.delete');
+  if (deleteButtons) {
+    deleteButtons.forEach((button) => {
+      button.addEventListener('click', delButtonHandler);
+    });
+  }
+});
 

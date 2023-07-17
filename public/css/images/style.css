@@ -162,3 +162,19 @@ h6 {
     height: 200px;
     width: 200px;
 }
+#profilecontainer{
+    height: 100%;
+    width: 100%;
+    border: 1px solid black
+}
+#reviewscontainer{
+   
+}
+/* .review-list{
+    display: flex;
+    justify-self: center;
+    
+} */
+.card {
+  
+}

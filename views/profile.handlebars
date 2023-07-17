@@ -1,16 +1,17 @@
+<div id="profilecontainer">
 <div class="row">
   <div class="col-auto">
     <h2>Welcome, {{name}} to your profile!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
+<div class="row mt-4" id="reviewscontainer">
   {{#if Reviews.length}}
   <div class="col-md-6 review-list">
     <h3>Your Reviews:</h3>
 
     {{#each Reviews as |review|}}
-    <div class= "card row mb-2">
+    <div class= "card row mb-2 w-75">
       <div class="col-md-8">
         <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
         <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
@@ -31,6 +32,7 @@
   <img src="https://i.imgflip.com/2/4rsexl.jpg" id="suchwow" alt="its empty">
   
   {{/if}}
+</div>
 </div>
 
 <script src="./js/profile.js"></script>
