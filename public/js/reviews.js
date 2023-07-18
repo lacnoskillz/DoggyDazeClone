@@ -58,10 +58,12 @@ const newReviewHandler = async (event) => {
         if (response.ok) {
             // console.log(description)
             window.location.reload();
-        } else {
-            console.log(amenities)
-
-            alert('Failed to create review');
+        } if(response.status === 409){
+            const errorData = await response.json();
+      alert(errorData.message);
+        }
+        else{
+            console.log("else in newreviewhandler")
         }
     }
 }
@@ -72,6 +74,5 @@ if (document.querySelector('.new-review-form')) {
         .querySelector('.new-review-form')
         .addEventListener('submit', prenewReviewHandler)
 };
-
 
 
