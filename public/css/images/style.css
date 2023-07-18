@@ -34,6 +34,10 @@ header{
     /* background-color: #0B666A; */
     
 }
+.slogan{
+text-align: center;
+font-family:monospace;
+}
 
  .nav-link{
     color:black !important;

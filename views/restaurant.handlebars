@@ -10,27 +10,6 @@
       referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs&q={{restaurant_name}}+(Restaurant),San+Antonio+TX">
     </iframe>
-    {{#if averageRating}}
-    <p>OVERALL RATING: {{averageRating}}/10 🐾's</p>
-    {{else}}
-    <p>No reviews yet, leave your own!</p>
-    {{/if}}
-    {{!-- Render reviews --}}
-    {{#if Reviews.length}}
-    <div class="reviewdiv">
-        <h5>REVIEWS:</h5>
-        {{#each Reviews as |review|}}
-        <div class="card mb-3 w-75">
-            <p>"{{review.description}}"</p>
-            <p>Rating: {{rating}}/10 🐾's</p>
-            <p>Review left by {{User.name}} on {{format_date date_created}}</p>
-            {{#each review.amenities as |amenity|}}
-                <li>{{amenity.item}} {{#if amenity.selected}}✔️{{else}}❌{{/if}}</li>
-            {{/each}}
-        </div>
-        {{/each}}
-    </div>
-    {{/if}}
     {{#if logged_in}}
     <div class="formdiv">
     <form class="new-review-form form">
@@ -65,6 +44,28 @@
         <p>Log in to leave a review</p>
     </div>
     {{/if}}
+    {{#if averageRating}}
+    <p>OVERALL RATING: {{averageRating}}/10 🐾's</p>
+    {{else}}
+    <p>No reviews yet, leave your own!</p>
+    {{/if}}
+    {{!-- Render reviews --}}
+    {{#if Reviews.length}}
+    <div class="reviewdiv">
+        <h5>REVIEWS:</h5>
+        {{#each Reviews as |review|}}
+        <div class="card mb-3 w-75">
+            <p>"{{review.description}}"</p>
+            <p>Rating: {{rating}}/10 🐾's</p>
+            <p>Review left by {{User.name}} on {{format_date date_created}}</p>
+            {{#each review.amenities as |amenity|}}
+                <li>{{amenity.item}} {{#if amenity.selected}}✔️{{else}}❌{{/if}}</li>
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+    
 </div>
 
 <script>
