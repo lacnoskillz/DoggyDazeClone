@@ -174,7 +174,34 @@ h6 {
     box-sizing: border-box;
   }
   /* add restaurant */
+  .addrescontainer{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+   
+    
+  }
+  #addresform{
+    align-self: center;
+    width: 20%;
+    margin-bottom:1%
+  }
  
+  .addresheader{
+    margin-top: 8%;
+    text-align: center;
+  }
+ .AddResIframe{
+  display: flex;
+  justify-content: center;
+ }
+ .addresconfirm{
+    margin: 1%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
   /* profile */
 #suchwow{
     height: 200px;

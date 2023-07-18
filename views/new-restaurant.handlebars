@@ -1,23 +1,21 @@
-<div>
+<div class="addrescontainer">
     {{#if logged_in}}
-    <div>
-        <h2>Add a new Restaurant</h2>
+    <div class="addresheader">
+        <h2 class="h2addres">Add a new Restaurant</h2>
         <p>Search for the restaurant you want to add</p>
     </div>
-    <form class="form search-form">
+    <form id="addresform"class="form search-form">
         <div>
             <div class="form-group">
                 <input class="form-input" type="text" id="search" />
-                <div class="form-group">
                     <button class="btn btn-primary" type="submit">Search</button>
-                </div>
             </div>
         </div>
     </form>
-    <div>
+    <div class="AddResIframe">
         <iframe id="map-frame"
-            width="600"
-            height="450"
+            width="90%"
+            height="400px"
             style="border:0"
             loading="lazy"
             allowfullscreen
@@ -26,7 +24,7 @@
         </iframe>
     </div>
     <form class="confirm">
-    <div>
+    <div class="addresconfirm">
         <h4>Selected Restaurant:</h4>
         <p id="result"></p>
         <div>
