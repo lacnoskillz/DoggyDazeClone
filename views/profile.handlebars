@@ -13,15 +13,17 @@
 
       {{#each Reviews as |review|}}
       
-        <div class="card mb-2 w-75">
+        <div class="card mb-2 w-75" >
           <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
             <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
           </a>
           <h4 class="reviewcardh4">Rating: {{rating}}/10 🐾's</h4>
           <p>Posted on: {{format_date date_created}}</p>
           <p>"{{description}}"</p>
-          <div class="col-md-4">
+          <div class="col-md-4" >
           <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
+          <button class="btn btn-sm  btn-warning" data-id="{{review.id}}">EDIT</button>
+         
         </div>
         </div>
         
