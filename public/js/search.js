@@ -23,11 +23,6 @@ const searchHandler = async (event) => {
         // Update the map's center to the selected restaurant location
         const restaurantLocation = results[0].geometry.location;
         map.setCenter(restaurantLocation);
-        map.fitBounds(results[0].geometry.viewport); // Adjust zoom based on viewport
-
-        // Optionally, you can set a maximum zoom level
-        // const maxZoomLevel = 16;
-        // map.setZoom(Math.min(maxZoomLevel, map.getZoom()));
       } else {
         result.textContent = "No restaurant found.";
       }
@@ -67,4 +62,3 @@ document
 document
   .querySelector('.confirm')
   .addEventListener('submit', addRestaurantHandler);
-
