@@ -10,7 +10,7 @@
    <div class="restaurantdiv">
     
   {{#each restaurants as |restaurant|}}
-  <div class="Singlerestaurant" data-image="./css/images/stockres2.jpg" >
+  <div class="Singlerestaurant" data-restaurant-id="{{restaurant.id}}">
   
     <h4>
       <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
@@ -31,6 +31,7 @@
       <p>No reviews yet, leave your own!</p>
       {{/if}}
     </div>
+    <button class="btn btn-primary singleresbtn">View Restaurant</button>
     </div>
     {{/each}}
     
