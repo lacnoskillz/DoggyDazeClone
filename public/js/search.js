@@ -30,7 +30,7 @@ const searchHandler = async (event) => {
         map.fitBounds(bounds);
 
         // Set a slightly lower zoom level (you can adjust this value as needed)
-        const desiredZoomLevel = 18; // Example: Set to 15
+        const desiredZoomLevel = 19; // Example: Set to 15
         map.setZoom(desiredZoomLevel);
       } else {
         result.textContent = "No restaurant found.";

@@ -73,10 +73,10 @@ flex-wrap: wrap;
 .singleresbtn{
   
 }
-.Singlerestaurant{
+.Singlerestaurant {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     width: 50vh;
@@ -84,10 +84,31 @@ flex-wrap: wrap;
     border: 1px solid black;
     padding: 1%;
     margin: 1%;
-    /* background-image: url('https://thumbs.dreamstime.com/b/cafe-series-11138951.jpg');
-  background-size: cover;
-  background-position: center; */
-}
+  }
+  
+  .Singlerestaurant h4 {
+    max-width: 90%; /* Set a maximum width for the restaurant name */
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .Singlerestaurant .card-body {
+    margin: 0;
+  }
+  
+  .Singlerestaurant img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .singleresbtn {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
 #ratingp{
     display: block;
     background-color: #97FEED;
@@ -101,6 +122,7 @@ flex-wrap: wrap;
     
     
 }
+/*  */
 .reviewdiv{
     display: flex;
     flex-direction: column;
@@ -218,8 +240,19 @@ h6 {
  }
   /* profile */
 #suchwow{
-    height: 200px;
-    width: 200px;
+   
+    height: 50%;
+    width: 50%;
+    border-radius: 25%;
+}
+.suchwowdiv{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+    
+}
+.suchwowh2{
+    text-align: center;
 }
 #profilecontainer{
     height: 100%;

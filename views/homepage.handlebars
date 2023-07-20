@@ -2,42 +2,31 @@
   <h2 id="homeh2">Check out these restaurants to see how dogfriendly they are!</h2>
   {{#if logged_in}}
   <div class="restaurantdiv">
-   
     <button class="btn btn-primary" id="new-restaurant" href="/new-restaurant">Add a new restaurant</button>
-    
   </div>
   {{/if}}
-   <div class="restaurantdiv">
-    
-  {{#each restaurants as |restaurant|}}
-<div class="Singlerestaurant" data-restaurant-id="{{restaurant.id}}">
-  <h4>
-    <a class="restaurants" href="/restaurant/{{restaurant.id}}">{{restaurant.restaurant_name}}</a>
-  </h4>
-  
-  <!-- Display the photo as a background image in the photo div -->
-  <div class="restaurant-photo" style="background-image: url('{{restaurant.photoReference}}')"></div>
-
-  <iframe
-    width="75%"
-    height="400px"
-    style="border:0"
-    loading="lazy"
-    allowfullscreen
-    referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&q={{restaurant.restaurant_name}}+(Restaurant),San+Antonio+TX">
-  </iframe>
-  
-  <div class="card-body">
-    {{#if averageRating}}
-    <p id="ratingp">Average rating: {{averageRating}} 🐾</p>
-    {{else}}
-    <p>No reviews yet, leave your own!</p>
-    {{/if}}
-  </div>
-  <button class="btn btn-primary singleresbtn">View Restaurant</button>
-</div>
-{{/each}}
-    
+  <div class="restaurantdiv">
+    {{#each restaurants as |restaurant|}}
+    <div class="Singlerestaurant" data-restaurant-id="{{restaurant.id}}">
+     <h4 title="{{restaurant.restaurant_name}}">
+  <a class="restaurants" href="/restaurant/{{restaurant.id}}">
+    {{restaurant.restaurant_name}}
+  </a>
+</h4>
+      <!-- Replace the iframe with the image element -->
+      <img
+        src="https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&location={{restaurant.restaurant_name}}&size=600x400&fov=80&heading=70&pitch=0"
+        alt="{{restaurant.restaurant_name}} Street View"
+      />
+      <div class="card-body">
+        {{#if averageRating}}
+        <p id="ratingp">Average rating: {{averageRating}} 🐾</p>
+        {{else}}
+        <p>No reviews yet, leave your own!</p>
+        {{/if}}
+      </div>
+      <button class="btn btn-primary singleresbtn">View Restaurant</button>
     </div>
+    {{/each}}
+  </div>
 </div>
