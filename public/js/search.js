@@ -23,12 +23,23 @@ const searchHandler = async (event) => {
         // Update the map's center to the selected restaurant location
         const restaurantLocation = results[0].geometry.location;
         map.setCenter(restaurantLocation);
+
+        // Adjust map zoom to fit the search result
+        const bounds = new google.maps.LatLngBounds();
+        bounds.extend(restaurantLocation);
+        map.fitBounds(bounds);
+
+        // Set a slightly lower zoom level (you can adjust this value as needed)
+        const desiredZoomLevel = 18; // Example: Set to 15
+        map.setZoom(desiredZoomLevel);
       } else {
         result.textContent = "No restaurant found.";
       }
     });
   }
 };
+
+
 
 const addRestaurantHandler = async (event) => {
   event.preventDefault();
