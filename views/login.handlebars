@@ -21,7 +21,8 @@
             <input class="form-input" type="password" id="password-login" />
           </div>
           
-          <div class="g-recaptcha" data-size="compact"data-sitekey="6Lev-EEkAAAAABosiOE7FUlzVg1bpquITPkjx5TP" data-callback="onCaptchaSubmit"></div>
+          <div class="g-recaptcha" data-size="compact" data-sitekey="{{RECAPTCHA_SITEKEY}}" data-callback="onCaptchaSubmit"></div>
+
           <div id="g-recaptcha-error"></div>
           
           <button id="login-submit" class="btn btn-primary" type="button" onclick="submitUserForm();">Login</button>

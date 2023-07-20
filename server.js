@@ -45,7 +45,10 @@ app.use((req, res, next) => {
   res.locals.DB_APIKEY = process.env.DB_APIKEY;
   next();
 });
-
+app.use((req, res, next) => {
+  res.locals.RECAPTCHA_SITEKEY = process.env.RECAPTCHA_SITEKEY;
+  next();
+});
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
