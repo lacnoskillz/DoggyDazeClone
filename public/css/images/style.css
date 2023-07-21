@@ -70,6 +70,10 @@ body {
 flex-wrap: wrap;
     
 }
+.loginhref{
+color: blue !important;
+  border-bottom: 1px solid black;
+}
 .singleresbtn{
   
 }
@@ -240,6 +244,9 @@ h6 {
     
  }
   /* profile */
+  .profileresbtn{
+    color: white !important; 
+  }
 #suchwow{
    
     height: 30%;

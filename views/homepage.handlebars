@@ -4,7 +4,13 @@
   <div class="restaurantdiv">
     <button class="btn btn-primary" id="new-restaurant" href="/new-restaurant">Add a new restaurant</button>
   </div>
-  {{/if}}
+  {{else}}
+  <div class="restaurantdiv">
+      <p>Dont see a restaurant? <a  class="loginhref" href="/login">Login</a> and add it!</p>
+  </div>
+ {{/if}}
+  
+
   <div class="restaurantdiv">
     {{#each restaurants as |restaurant|}}
     <div class="Singlerestaurant" data-restaurant-id="{{restaurant.id}}">
