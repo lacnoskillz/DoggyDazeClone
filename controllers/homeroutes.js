@@ -5,6 +5,8 @@ const withAuth = require('../utils/auth');
 
 const ITEMS_PER_PAGE = 6; // Number of restaurants to display per page
 
+const { Op } = require('sequelize'); // Import the Op operator from Sequelize
+
 router.get('/', async (req, res) => {
   try {
     const page = req.query.page || 1; // Get the page number from the query parameters, default to 1 if not provided
@@ -14,12 +16,31 @@ router.get('/', async (req, res) => {
     const limit = ITEMS_PER_PAGE;
 
     const restaurantData = await Restaurant.findAndCountAll({
-      // ... Your existing code for finding restaurants and calculating averageRating ...
+      include: [{ model: Review }], // Include the Review model to calculate averageRating
+      attributes: {
+        include: [
+          // Use sequelize.literal() to calculate averageRating
+          [
+            sequelize.literal(
+              '(SELECT ROUND(AVG(rating), 1) AS averageRating FROM reviews WHERE reviews.restaurant_id = restaurant.id)'
+            ),
+            'averageRating',
+          ],
+        ],
+      },
       offset, // Apply the OFFSET
       limit, // Apply the LIMIT
     });
 
-    const restaurants = restaurantData.rows.map((restaurant) => restaurant.get({ plain: true }));
+    const restaurants = restaurantData.rows.map((restaurant) => {
+      // Get the plain object and add averageRating to each restaurant
+      const plainRestaurant = restaurant.get({ plain: true });
+      return {
+        ...plainRestaurant,
+        averageRating: plainRestaurant.averageRating || 0, // Set averageRating to 0 if it's not available
+      };
+    });
+
     const totalRestaurants = restaurantData.count;
     const totalPages = Math.ceil(totalRestaurants / ITEMS_PER_PAGE);
 
@@ -37,6 +58,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 
 
