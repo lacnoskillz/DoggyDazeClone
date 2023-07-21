@@ -107,7 +107,18 @@ color: blue !important;
     max-height: 100%;
     object-fit: cover;
   }
-  
+  /*  */
+  .pageselectdiv{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1%;
+  }
+  .previouspage{
+color:white !important;
+  }
+  .nextpage{
+    color:white !important;
+  }
   .singleresbtn {
     width: 100%;
     flex-shrink: 0;

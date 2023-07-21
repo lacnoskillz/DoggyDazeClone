@@ -34,5 +34,17 @@
       <button class="btn btn-primary singleresbtn">View Restaurant</button>
     </div>
     {{/each}}
+  
+  </div>
+   <div class="pageselectdiv">
+    {{#if hasPreviousPage}}
+    <a href="/?page={{previousPage}}" class="btn btn-primary previouspage">&#8249;</a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href="/?page={{nextPage}}" class="btn btn-primary nextpage">&#8250;</a>
+    {{/if}}
   </div>
 </div>
+</div>
+

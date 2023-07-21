@@ -3,32 +3,43 @@ const { Restaurant, User, Review } = require('../models');
 const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
 
+const ITEMS_PER_PAGE = 6; // Number of restaurants to display per page
+
 router.get('/', async (req, res) => {
   try {
-    const restaurantData = await Restaurant.findAll({
-      include: [{ model: Review }],
-      attributes: {
-        include: [
-          [
-            sequelize.literal(
-              '(SELECT ROUND(AVG(rating),1) AS averageRating FROM reviews WHERE reviews.restaurant_id = restaurant.id)'
-            ),
-            'averageRating',
-          ],
-        ],
-      },
+    const page = req.query.page || 1; // Get the page number from the query parameters, default to 1 if not provided
+
+    // Calculate the OFFSET and LIMIT for the query
+    const offset = (page - 1) * ITEMS_PER_PAGE;
+    const limit = ITEMS_PER_PAGE;
+
+    const restaurantData = await Restaurant.findAndCountAll({
+      // ... Your existing code for finding restaurants and calculating averageRating ...
+      offset, // Apply the OFFSET
+      limit, // Apply the LIMIT
     });
 
-    const restaurants = restaurantData.map((restaurant) => restaurant.get({ plain: true }));
+    const restaurants = restaurantData.rows.map((restaurant) => restaurant.get({ plain: true }));
+    const totalRestaurants = restaurantData.count;
+    const totalPages = Math.ceil(totalRestaurants / ITEMS_PER_PAGE);
+
     res.render('homepage', {
       restaurants,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      currentPage: page,
+      totalPages: totalPages,
+      hasPreviousPage: page > 1,
+      hasNextPage: page < totalPages,
+      previousPage: parseInt(page) - 1,
+      nextPage: parseInt(page) + 1,
     });
-    //res.status(200).json(restaurantData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
 
 
 router.get('/login', async (req, res) => {
