@@ -1,7 +1,8 @@
 <div class="edit-review-container">
+    <div class="inner-edit-review-container">
     {{#if logged_in}}
-    <div class="">
-        <h2 class="h2addres">Edit Review</h2>
+    <div class="h2review">
+        <h2 class="">Edit Review</h2>
     </div>
     <form class="edit-review-form form" >
   {{!-- Set the method to PUT to indicate an update operation --}}
@@ -19,7 +20,7 @@
   {{!-- Add checkboxes for amenities here (similar to your new-review-form) --}}
 <p>How dog friendly would you rate your experience here?</p>
         <div class="slidecontainer">
-            <input type="number" min="1" max="10" value="{{review.rating}}" class="slider" id="rating" name="rating">
+            <input type="range" min="1" max="10" value="{{review.rating}}" class="slider" id="rating" name="rating">
             <p>Rating: <span id="demo"></span>/10 🐾's</p>
         </div>
         {{!-- slider end --}}
@@ -43,9 +44,10 @@
         <p>You must <a href="/login">log in</a> to edit your reviews</p>
     </div>
     {{/if}}
+    </div>
 </div>
 <script>
-    var slider = document.getElementById("myRange");
+    var slider = document.getElementById("rating");
     var output = document.getElementById("demo");
     if(slider){
     output.innerHTML = slider.value;

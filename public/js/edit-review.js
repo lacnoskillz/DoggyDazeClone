@@ -27,7 +27,8 @@ const editReviewHandler = async (event) => {
       });
   
       if (response.ok) {
-        window.location.reload();
+        alert("review edited")
+        document.location.replace('/profile')
       } else if (response.status === 409) {
         const errorData = await response.json();
         alert(errorData.message);

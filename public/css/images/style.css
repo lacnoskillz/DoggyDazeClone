@@ -145,7 +145,28 @@ color:white !important;
     
     
 }
-/*  */
+/*  Reviews*/
+#description{
+  width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.edit-review-container{
+  padding: 2%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+ text-align: center;
+  
+}
+.inner-edit-review-container{
+  margin-top: 8%;
+  
+  margin-bottom: 1%;
+}
 .reviewdiv{
     display: flex;
     flex-direction: column;
