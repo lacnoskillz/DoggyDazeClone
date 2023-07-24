@@ -173,4 +173,27 @@ router.get('/new-restaurant', async (req, res) => {
   });
 });
 
+router.get('/edit-review/:id', async (req, res) => {
+  try {
+    // Get the review ID from the URL parameter
+    const reviewId = req.params.id;
+
+    // Fetch the review data based on the reviewId (you need to implement this part)
+    const reviewData = await Review.findByPk(reviewId);
+
+    if (!reviewData) {
+      // If reviewData is not found, handle the error (e.g., redirect to an error page)
+      return res.status(404).json({ error: 'Review not found' });
+    }
+
+    // Pass the review data to the edit-review page
+    res.render('edit-review', {
+      review: reviewData.get({ plain: true }),
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

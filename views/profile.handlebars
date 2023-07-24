@@ -10,26 +10,22 @@
     <h3 class="Profileh3">Your Reviews:</h3>
     <div class="review-list">
       
-
-      {{#each Reviews as |review|}}
-      
-        <div class="card mb-2 w-75" >
-          <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
-            <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
-          </a>
-          <h4 class="reviewcardh4">Rating: {{rating}}/10 🐾's</h4>
-          <p>Posted on: {{format_date date_created}}</p>
-          <p>"{{description}}"</p>
-          <div class="col-md-4" >
-            <a class="btn btn-sm btn-primary profileresbtn"  href="/restaurant/{{review.Restaurant.id}}">VIEW</a>
-          <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
-          <button class="btn btn-sm  btn-warning" data-id="{{review.id}}">EDIT</button>
-         
-        </div>
-        </div>
-        
-      
-      {{/each}}
+{{#each Reviews as |review|}}
+  <div class="card mb-2 w-75">
+    <a class="restaurants" href="/restaurant/{{review.Restaurant.id}}">
+      <h3>Restaurant Name: {{review.Restaurant.restaurant_name}}</h3>
+    </a>
+    <h4 class="reviewcardh4">Rating: {{rating}}/10 🐾's</h4>
+    <p>Posted on: {{format_date date_created}}</p>
+    <p>"{{description}}"</p>
+    <div class="col-md-4">
+      <a class="btn btn-sm btn-primary profileresbtn" href="/restaurant/{{review.Restaurant.id}}">VIEW</a>
+      <button class="btn btn-sm delete btn-danger" data-id="{{review.id}}">DELETE</button>
+      {{!-- Add a link to the "Edit Review" page with the review ID as a parameter --}}
+      <a class="btn btn-sm btn-warning" href="/edit-review/{{review.id}}">EDIT</a>
+    </div>
+  </div>
+{{/each}}
     </div>
     {{else}}
     <div class="suchwowdiv">

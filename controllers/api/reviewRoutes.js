@@ -38,26 +38,46 @@ router.get('/', async (req, res) => {
   }
 });
 // put route to update review
-router.put('/:id', async (req, res) => {
-  Review.update(
-    {
-      // All the fields you can update and the data attached to the request body.
-      rating: req.body.rating,
-      description: req.body.description,
-      amenities: req.body.amenities,
-    },
-    {
-      // Gets the Review based on the id given in the request parameters
-      where: {
-        id: req.params.id,
-      },
+// Add the PUT route to update the review
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    // Get the ID of the review to be updated from the request parameters
+    const reviewId = req.params.id;
+
+    // Find the review to be updated in the database
+    const reviewData = await Review.findByPk(reviewId);
+
+    // Check if the review exists
+    if (!reviewData) {
+      res.status(404).json({ message: 'Review not found' });
+      return;
     }
-  )
-    .then((updatedReview) => {
-      // Sends the updated review as a json response
-      res.json(updatedReview);
-    })
-    .catch((err) => res.json(err));
+
+    // Check if the logged-in user is the owner of the review
+    if (reviewData.user_id !== req.session.user_id) {
+      res.status(403).json({ message: 'You are not authorized to edit this review' });
+      return;
+    }
+    const amenities = JSON.stringify(req.body.amenities);
+    // Update the review data with the new values
+    await Review.update(
+      {
+        rating: req.body.rating,
+        description: req.body.description,
+        amenities: amenities,
+      },
+      {
+        where: {
+          id: reviewId,
+        },
+      }
+    );
+
+    // Send a success response
+    res.status(200).json({ message: 'Review updated successfully' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', withAuth, async (req, res) => {
