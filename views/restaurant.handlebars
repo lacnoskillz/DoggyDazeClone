@@ -1,15 +1,15 @@
 
 <div class="text-center">
-    <h2 class="Singleresname">{{restaurant_name}}</h2>
+    <h2 class="Singleresname">{{{restaurant_name}}}</h2>
     <iframe
-      width="90%"
-      height="450px"
-      style="border:0"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC7zAtsP6T4gvbxxyZbASjxQjIKfdAlOcs&q={{restaurant_name}}+(Restaurant),San+Antonio+TX">
-    </iframe>
+  width="90%"
+  height="450px"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&q={{encodeURI restaurant_name}}+(Restaurant),San+Antonio+TX">
+</iframe>
     {{#if logged_in}}
     <div class="formdiv">
     <form class="new-review-form form">

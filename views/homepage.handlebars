@@ -1,29 +1,28 @@
 <div class="homepagecontainer">
-  <h2 id="homeh2">Check out these restaurants to see how dogfriendly they are!</h2>
+  <h2 id="homeh2">Check out these restaurants to see how dog-friendly they are!</h2>
   {{#if logged_in}}
   <div class="restaurantdiv">
     <button class="btn btn-primary" id="new-restaurant" href="/new-restaurant">Add a new restaurant</button>
   </div>
   {{else}}
   <div class="restaurantdiv">
-      <p>Dont see a restaurant? <a  class="loginhref" href="/login">Login</a> and add it!</p>
+      <p>Dont see a restaurant? <a class="loginhref" href="/login">Login</a> and add it!</p>
   </div>
  {{/if}}
-  
 
   <div class="restaurantdiv">
     {{#each restaurants as |restaurant|}}
     <div class="Singlerestaurant" data-restaurant-id="{{restaurant.id}}">
-     <h4 title="{{restaurant.restaurant_name}}">
-  <a class="restaurants" href="/restaurant/{{restaurant.id}}">
-    {{{restaurant.restaurant_name}}}
-  </a>
-</h4>
+      <h4 title="{{{restaurant.restaurant_name}}}">
+        <a class="restaurants" href="/restaurant/{{restaurant.id}}">
+          {{{restaurant.restaurant_name}}}
+        </a>
+      </h4>
       <!-- Replace the iframe with the image element -->
-      <img
-        src="https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&location={{restaurant.restaurant_name}}&size=600x400&fov=80&heading=70&pitch=0"
-        alt="{{restaurant.restaurant_name}} Street View"
-      />
+  <img
+  src="https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&location={{encodeURI restaurant.restaurant_name}}&size=600x400&fov=80&heading=70&pitch=0"
+  alt="{{{restaurant.restaurant_name}}} Street View"
+/>
       <div class="card-body">
         {{#if averageRating}}
         <p id="ratingp">Average rating: {{averageRating}}/10🐾</p>
@@ -34,9 +33,9 @@
       <button class="btn btn-primary singleresbtn">View Restaurant</button>
     </div>
     {{/each}}
-  
+
   </div>
-   <div class="pageselectdiv">
+  <div class="pageselectdiv">
     {{#if hasPreviousPage}}
     <a href="/?page={{previousPage}}" class="btn btn-primary previouspage">&#8249;</a>
     {{/if}}
@@ -45,6 +44,5 @@
     <a href="/?page={{nextPage}}" class="btn btn-primary nextpage">&#8250;</a>
     {{/if}}
   </div>
-</div>
 </div>
 
