@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ 
   helpers: {
+    ...helpers,
   encodeURI: (value) => encodeURIComponent(value),
 }, 
 });
