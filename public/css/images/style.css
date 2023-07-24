@@ -150,6 +150,7 @@ color:white !important;
 /*  Reviews*/
 #description{
   width: 100%;
+  height: 20vh;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
