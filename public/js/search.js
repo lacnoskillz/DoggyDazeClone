@@ -55,10 +55,12 @@ const addRestaurantHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      const responseData = await response.json(); // Parse the JSON response from the server
+      alert(responseData.message); // Display the custom error message sent by the server
     }
   }
 };
+
 
 // Initialize the map with San Antonio's coordinates
 map = new google.maps.Map(document.getElementById("map"), {
