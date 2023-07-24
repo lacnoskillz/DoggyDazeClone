@@ -20,7 +20,45 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// get route to get all reviews
+router.get('/', async (req, res) => {
+  try {
+    const ReviewData = await Review.findAll()
 
+ 
+    if (!ReviewData) {
+      res.status(404).json({ message: 'Review Not found' });
+      return;
+    }
+
+    res.status(200).json(ReviewData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+// put route to update review
+router.put('/:id', async (req, res) => {
+  Review.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      rating: req.body.rating,
+      description: req.body.description,
+      amenities: req.body.amenities,
+    },
+    {
+      // Gets the Review based on the id given in the request parameters
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedReview) => {
+      // Sends the updated review as a json response
+      res.json(updatedReview);
+    })
+    .catch((err) => res.json(err));
+});
 
 router.post('/', withAuth, async (req, res) => {
   try {
