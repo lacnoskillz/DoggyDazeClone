@@ -43,24 +43,23 @@
   </div>
 <div class="pageselectdiv">
   {{#if hasPreviousPage}}
-  <a href="/search?page={{previousPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary previouspage">&#8249;</a>
+  <a href="/?page={{previousPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary previouspage">&#8249;</a>
   {{/if}}
 
   {{#if hasNextPage}}
-  <a href="/search?page={{nextPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary nextpage">&#8250;</a>
+  <a href="/?page={{nextPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary nextpage">&#8250;</a>
   {{/if}}
 </div>
 </div>
 <script>
   // Attach an event listener to the search form
-const searchForm = document.querySelector('.search-form');
+  const searchForm = document.querySelector('.search-form');
 
-searchForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const searchTerm = e.target.querySelector('input[name="restaurant_name"]').value;
-  // Redirect to the search route with the search term as a query parameter
-  window.location.href = `/search?restaurant_name=${encodeURIComponent(searchTerm)}`;
-});
-
+    const searchTerm = e.target.querySelector('input[name="restaurant_name"]').value;
+    // Redirect to the search route with the search term as a query parameter
+    window.location.href = `/search?restaurant_name=${encodeURIComponent(searchTerm)}`;
+  });
 </script>

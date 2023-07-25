@@ -204,7 +204,8 @@ router.get('/search', async (req, res) => {
     // Calculate the OFFSET and LIMIT for the query
     const offset = (page - 1) * ITEMS_PER_PAGE;
     const limit = ITEMS_PER_PAGE;
-
+    console.log('Offset:', offset);
+    console.log('Limit:', limit);
     // Use the Sequelize `where` clause with `Op.iLike` to perform case-insensitive search for MySQL
     const restaurantData = await Restaurant.findAndCountAll({
       where: {
