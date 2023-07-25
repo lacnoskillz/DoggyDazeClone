@@ -9,6 +9,12 @@
       <p>Dont see a restaurant? <a class="loginhref" href="/login">Login</a> and add it!</p>
   </div>
  {{/if}}
+<div class="search-form">
+  <form action="/search" method="GET">
+    <input type="text" name="restaurant_name" placeholder="Search for a restaurant">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
 
   <div class="restaurantdiv">
     {{#each restaurants as |restaurant|}}
@@ -35,14 +41,26 @@
     {{/each}}
 
   </div>
-  <div class="pageselectdiv">
-    {{#if hasPreviousPage}}
-    <a href="/?page={{previousPage}}" class="btn btn-primary previouspage">&#8249;</a>
-    {{/if}}
+<div class="pageselectdiv">
+  {{#if hasPreviousPage}}
+  <a href="/search?page={{previousPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary previouspage">&#8249;</a>
+  {{/if}}
 
-    {{#if hasNextPage}}
-    <a href="/?page={{nextPage}}" class="btn btn-primary nextpage">&#8250;</a>
-    {{/if}}
-  </div>
+  {{#if hasNextPage}}
+  <a href="/search?page={{nextPage}}&restaurant_name={{encodeURI searchTerm}}" class="btn btn-primary nextpage">&#8250;</a>
+  {{/if}}
 </div>
+</div>
+<script>
+  // Attach an event listener to the search form
+const searchForm = document.querySelector('.search-form');
 
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const searchTerm = e.target.querySelector('input[name="restaurant_name"]').value;
+  // Redirect to the search route with the search term as a query parameter
+  window.location.href = `/search?restaurant_name=${encodeURIComponent(searchTerm)}`;
+});
+
+</script>

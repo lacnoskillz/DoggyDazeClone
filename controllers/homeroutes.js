@@ -195,5 +195,64 @@ router.get('/edit-review/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+//new get to handle search in homepage to find restaurants saved
+router.get('/search', async (req, res) => {
+  try {
+    const page = req.query.page || 1; // Get the page number from the query parameters, default to 1 if not provided
+    const searchTerm = req.query.restaurant_name; // Get the restaurant name search term from the query parameters
+
+    // Calculate the OFFSET and LIMIT for the query
+    const offset = (page - 1) * ITEMS_PER_PAGE;
+    const limit = ITEMS_PER_PAGE;
+
+    // Use the Sequelize `where` clause with `Op.iLike` to perform case-insensitive search for MySQL
+    const restaurantData = await Restaurant.findAndCountAll({
+      where: {
+        restaurant_name: {
+          [Op.like]: `%${searchTerm}%`, // Case-insensitive search for restaurants containing the search term
+        },
+      },
+      include: [{ model: Review }], // Include the Review model to calculate averageRating
+      attributes: {
+        include: [
+          // Use sequelize.literal() to calculate averageRating
+          [
+            sequelize.literal(
+              '(SELECT ROUND(AVG(rating), 1) AS averageRating FROM reviews WHERE reviews.restaurant_id = restaurant.id)'
+            ),
+            'averageRating',
+          ],
+        ],
+      },
+      offset, // Apply the OFFSET
+      limit, // Apply the LIMIT
+    });
+
+    const restaurants = restaurantData.rows.map((restaurant) => {
+      // Get the plain object and add averageRating to each restaurant
+      const plainRestaurant = restaurant.get({ plain: true });
+      return {
+        ...plainRestaurant,
+        averageRating: plainRestaurant.averageRating || 0, // Set averageRating to 0 if it's not available
+      };
+    });
+
+    const totalRestaurants = restaurantData.count;
+    const totalPages = Math.ceil(totalRestaurants / ITEMS_PER_PAGE);
+
+    res.render('homepage', {
+      restaurants,
+      logged_in: req.session.logged_in,
+      currentPage: page,
+      totalPages: totalPages,
+      hasPreviousPage: page > 1,
+      hasNextPage: page < totalPages,
+      previousPage: parseInt(page) - 1,
+      nextPage: parseInt(page) + 1,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

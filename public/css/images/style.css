@@ -113,6 +113,10 @@ color: blue !important;
     object-fit: cover;
   }
   /*  */
+  .search-form{
+   display: flex;
+   justify-content: center;
+  }
   .pageselectdiv{
     display: flex;
     justify-content: space-evenly;
