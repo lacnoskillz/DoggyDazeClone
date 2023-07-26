@@ -3,24 +3,34 @@ const { User } = require('../../models');
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
+// Check if email exists in the database
+const isEmailRegistered = async (email) => {
+  const user = await User.findOne({ where: { email } });
+  return user !== null;
+};
+
 //new
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-    const msg = {
-      to: req.body.email, // Change to your recipient
-      from: 'rosalvahmartinez@gmail.com', // Change to your verified sender
-      subject: 'Sending with SendGrid is Fun',
-      text: 'Thank You ' + req.body.name + ' for signing up with Doggy Daze!'
+    const { name, email, password } = req.body;
+
+    // Check if email is already registered
+    const emailExists = await isEmailRegistered(email);
+    if (emailExists) {
+      return res.status(400).json({ error: 'Email already registered' });
     }
-    sgMail
-      .send(msg)
-      .then(() => {
-        console.log('Email sent')
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+
+    const userData = await User.create({ name, email, password });
+
+    const msg = {
+      to: email,
+      from: 'rosalvahmartinez@gmail.com',
+      subject: 'Sending with SendGrid is Fun',
+      text: 'Thank You ' + name + ' for signing up with Doggy Daze!'
+    };
+    
+    // ... (rest of the email sending code) ...
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;

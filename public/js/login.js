@@ -1,25 +1,6 @@
-// const loginFormHandler = async (event) => {
-//   event.preventDefault();
 
-//   // Collect values from the login form
-//   const name = document.querySelector('#email-login').value.trim();
-//   const password = document.querySelector('#password-login').value.trim();
-//   if (name && password) {
-//     // Send a POST request to the API endpoint
-//     const response = await fetch('/api/users/login', {
-//       method: 'POST',
-//       body: JSON.stringify({ name, password }),
-//       headers: { 'Content-Type': 'application/json' },
-//     });
+//login logic/script is in login handlebars
 
-//     if (response.ok) {
-//       // If successful, redirect the browser to the profile page
-//       document.location.replace('/profile');
-//     } else {
-//       alert(response.statusText);
-//     }
-//   }
-// };
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
@@ -27,6 +8,19 @@ const signupFormHandler = async (event) => {
   const name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+
+  // Validate email format using a regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Invalid email format. Please enter a valid email address.');
+    return;
+  }
+
+  // Validate password length
+  if (password.length < 8) {
+    alert('Password should be at least 8 characters long.');
+    return;
+  }
 
   if (name && email && password) {
     const response = await fetch('/api/users', {
@@ -38,10 +32,18 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      const responseData = await response.json();
+      if (responseData.error === 'Email already registered') {
+        alert('Email is already registered. Please use a different email or log in.');
+      } else {
+        alert(responseData.error || 'Error during signup.');
+      }
     }
   }
 };
+
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+
 
 
 
