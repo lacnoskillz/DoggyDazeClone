@@ -10,6 +10,11 @@
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCY_952gGjBqylPvw16_rgi2pB2NI6aoPk&q={{encodeURI restaurant_name}}+(Restaurant),San+Antonio+TX">
 </iframe>
+ {{#if averageRating}}
+    <p class="ratingp2">OVERALL RATING: {{averageRating}}/10 🐾's</p>
+    {{else}}
+    <p>No reviews yet, leave your own!</p>
+    {{/if}}
     {{#if logged_in}}
     <div class="formdiv">
     <form class="new-review-form form">
@@ -39,16 +44,13 @@
         {{!-- check all that apply end --}}
     </form>
     </div>
+    
     {{else}}
     <div>
-        <p>Log in to leave a review</p>
+        <p> <a class="loginhref" href="/login">Log-in</a> to leave a review!</p>
     </div>
     {{/if}}
-    {{#if averageRating}}
-    <p>OVERALL RATING: {{averageRating}}/10 🐾's</p>
-    {{else}}
-    <p>No reviews yet, leave your own!</p>
-    {{/if}}
+   
     {{!-- Render reviews --}}
     {{#if Reviews.length}}
     <div class="reviewdiv">
