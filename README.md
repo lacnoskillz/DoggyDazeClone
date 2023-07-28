@@ -6,6 +6,7 @@ Doggy Daze was made so dog owners can find the best resaurants for themselves an
 for users to make reviews and see how dog friendly restaurants are!
 ### Technologys
 ***
+* rapidAPI dog facts
 * recaptcha api
 * google maps api
 * express-handlebars
