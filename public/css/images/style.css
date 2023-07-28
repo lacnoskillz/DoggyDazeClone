@@ -151,7 +151,14 @@ color:white !important;
  
   background-color: #97FEED;
 }
-
+.randomfact{
+  padding: 1%;
+  margin: 1%;
+  display: flex; 
+  justify-content: center;
+  font-family: Pacifico;
+  transform: skewX(-10deg);
+}
 .homepagecontainer{
     
    

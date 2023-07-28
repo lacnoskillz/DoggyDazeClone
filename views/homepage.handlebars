@@ -2,6 +2,7 @@
   <h2 id="homeh2">Check out these restaurants to see how dog-friendly they are!</h2>
   {{#if logged_in}}
   <div class="restaurantdiv">
+    {{!-- <p>Dont see a restaurant?</p> --}}
     <button class="btn btn-primary" id="new-restaurant" href="/new-restaurant">Add a new restaurant</button>
   </div>
   {{else}}
@@ -9,11 +10,16 @@
       <p>Dont see a restaurant? <a class="loginhref" href="/login">Log-in</a> and add it!</p>
   </div>
  {{/if}}
+ <div>
+ <div class="randomfact" id="rando">...loading random dog fact
+
+ </div>
 <div class="search-form">
   <form action="/search" method="GET">
     <input type="text" name="restaurant_name" placeholder="Search for a restaurant">
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
+</div>
 </div>
 
   <div class="restaurantdiv">
@@ -52,6 +58,30 @@
 </div>
 </div>
 <script>
+  const randomfactdiv = document.getElementById('rando')
+  async function getdogpicdata (){
+    const url = 'https://dog-facts2.p.rapidapi.com/facts';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'e30f0af2f4msh5c078a6a64ee1d0p1383aajsnde6e830e92da',
+            'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com'
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result.facts[0]);
+        randomfactdiv.innerHTML = result.facts[0]
+
+    } catch (error) {
+        console.error(error);
+    }
+
+
+}
+getdogpicdata()
   // Attach an event listener to the search form
   const searchForm = document.querySelector('.search-form');
 
