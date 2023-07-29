@@ -151,13 +151,27 @@ color:white !important;
  
   background-color: #97FEED;
 }
+.dogfactcontainer{
+margin-bottom: 1%;
+align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#dogfacttitle{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  border-bottom: 1px solid black;
+
+}
 .randomfact{
-  padding: 1%;
-  margin: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
   display: flex; 
   justify-content: center;
   font-family: Pacifico;
-  transform: skewX(-10deg);
+ 
 }
 .homepagecontainer{
     
@@ -376,3 +390,6 @@ text-align: center;
     margin: 1%;
   }
 }
+
+
+

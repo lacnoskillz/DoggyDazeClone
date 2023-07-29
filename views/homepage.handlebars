@@ -11,8 +11,11 @@
   </div>
  {{/if}}
  <div>
+  <div class="dogfactcontainer">
+  <h5 id="dogfacttitle">Daily dog fact</h5>
  <div class="randomfact" id="rando">...loading random dog fact
 
+ </div>
  </div>
 <div class="search-form">
   <form action="/search" method="GET">
@@ -58,30 +61,48 @@
 </div>
 </div>
 <script>
-  const randomfactdiv = document.getElementById('rando')
-  async function getdogpicdata (){
-    const url = 'https://dog-facts2.p.rapidapi.com/facts';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'e30f0af2f4msh5c078a6a64ee1d0p1383aajsnde6e830e92da',
-            'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com'
-        }
-    };
-    
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result.facts[0]);
-        randomfactdiv.innerHTML = result.facts[0]
+const randomfactdiv = document.getElementById('rando');
 
-    } catch (error) {
-        console.error(error);
+async function getdogpicdata() {
+  const url = 'https://dog-facts2.p.rapidapi.com/facts';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'e30f0af2f4msh5c078a6a64ee1d0p1383aajsnde6e830e92da',
+      'X-RapidAPI-Host': 'dog-facts2.p.rapidapi.com',
+    },
+  };
+
+  try {
+    // Check if the data is available in localStorage
+    const storedData = localStorage.getItem('dogFactsData');
+    const storedTimestamp = localStorage.getItem('dogFactsLastFetch');
+
+    const currentTime = new Date().getTime();
+    const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+    if (storedData && storedTimestamp && currentTime - storedTimestamp < twentyFourHours) {
+      // Use the data from localStorage
+      randomfactdiv.innerHTML = storedData;
+    } else {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      const fact = result.facts[0];
+
+      // Save the current timestamp and data to localStorage
+      localStorage.setItem('dogFactsLastFetch', currentTime);
+      localStorage.setItem('dogFactsData', fact);
+
+      randomfactdiv.innerHTML = fact;
     }
-
-
+  } catch (error) {
+    console.error(error);
+  }
 }
-getdogpicdata()
+
+getdogpicdata();
+
+
   // Attach an event listener to the search form
   const searchForm = document.querySelector('.search-form');
 
