@@ -10,7 +10,7 @@ const searchHandler = async (event) => {
 
     const request = {
       query: `${search} Restaurant, San Antonio, TX`,
-      fields: ["name", "formatted_address", "geometry"],
+      fields: ["name", "formatted_address", "geometry","photos"],
     };
 
     placesService.findPlaceFromQuery(request, (results, status) => {
@@ -32,6 +32,8 @@ const searchHandler = async (event) => {
         // Set a slightly lower zoom level (you can adjust this value as needed)
         const desiredZoomLevel = 19; // Example: Set to 15
         map.setZoom(desiredZoomLevel);
+        console.log(results,"results")
+        console.log(results[0].photos[0],"resutls photos")
       } else {
         result.textContent = "No restaurant found.";
       }
